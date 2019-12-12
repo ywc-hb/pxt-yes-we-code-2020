@@ -10,6 +10,8 @@ Le but est simple : toucher l'adversaire sans se faire toucher. Mais ne désesp�
 
 Pour tuer un adversaire, c'est très simple, il suffit de le toucher avec la balle. Mais attention, de nombreux obstacles se trouvent sur votre chemin et peuvent vous gêner. Il va donc falloir ruser pour atteindre son adversaire !
 
+Vous ne trouvez pas la manette ? C'est normal, la manette, c'est le t-shirt !
+
 ### Détails techniques ###
 
  - Les persos ainsi que le plateau son en vue du dessus
@@ -43,10 +45,7 @@ Célestine, Adrien et Thanusan : Design du projet
 
 #### Liens utiles ####
 
-Les différentes manettes de microbit :
- - [La complète](https://www.kubii.fr/microbit/2245-bit-commander-pour-micro-bit-kubii-8438524612430.html)
- - [La semi-complète](https://www.kubii.fr/microbit/2183-joystick-bit-pour-micro-bit-kubii-3272496010949.html)
- - [La basique](https://www.kubii.fr/microbit/2200-module-gamepad-pour-micro-bit-kubii-3272496011144.html)
+[La manette possible](https://www.kubii.fr/microbit/2183-joystick-bit-pour-micro-bit-kubii-3272496010949.html)
  
 [L'écran](https://www.kubii.fr/microbit/2198-module-d-affichage-colore-18-pour-micro-bit-160x128-kubii-3272496011120.html)
 
