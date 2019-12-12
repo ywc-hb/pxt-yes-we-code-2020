@@ -6,7 +6,7 @@
 
 Notre projet dans le cadre du concours _Yes We Code 2020_ est un jeu vidéo. Notre jeu vidéo s'appelle : **_Insérer ici un nom de jeu_** !
 
-Le but est simple : toucher l'adversaire sans se faire toucher. Mais ne désespérez pas pour autant si vous êtes touché(e) ! Vous pouvez revivre en tapant un code d'une certaine taille au début de la partie ! Bien évidemment, une fois ce code utilisé, l'ordinateur vous en donnera un autre plus long cette fois-ci, et donc plus compliqué à retenir.
+Le but est simple : toucher l'adversaire sans se faire toucher. Mais ne désespérez pas pour autant si vous êtes touché(e) ! Vous pouvez revivre en tapant un code d'une certaine taille au début de la partie ! Bien évidemment, une fois ce code utilisé, la microbit vous en donnera un autre plus long cette fois-ci, et donc plus compliqué à retenir.
 
 Pour tuer un adversaire, c'est très simple, il suffit de le toucher avec la balle. Mais attention, de nombreux obstacles se trouvent sur votre chemin et peuvent vous gêner. Il va donc falloir ruser pour atteindre son adversaire !
 
