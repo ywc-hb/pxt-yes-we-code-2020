@@ -1,9 +1,14 @@
 function patternOne() :void {
     /* Fonction dessinant les murs de la map 1 */
-    let murs = [[0, 30, 15, 30]] //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
-
-    for(let i = 0; i < murs.length ; i++) {
-        
+    //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
+    //1ere ligne = horizontal partie gauche, puis vertical partie gauche, puis horizontal partie droite, et verticale partie droite
+    let murs = [[1, 50, 16, 50], [1, 78, 16, 78], [31, 34, 56, 34], [31, 94, 56, 94], [36, 59, 46, 59], [36, 69, 46, 69], [70, 64, 80, 64], [18, 0, 18, 12], [48, 0, 48, 12], [18, 116, 18, 128], [48, 116, 48, 128], 
+    [80, 1, 80, 25], [80, 45, 80, 85], [80, 103, 80, 128], [36, 59, 36, 69], [46, 59, 46, 69], [18, 12, 48, 12], [18, 116, 48, 116], 
+    [80, 64, 90, 64], [160, 50, 144, 50]]
+    let j = 0;
+    while (j < murs.length) {
+        LCD1IN8.DrawLine(murs[j][0], murs[j][1], murs[j][2], murs[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
+        j ++
     }
 }
 
@@ -20,7 +25,7 @@ function patternThree() :void {
 function displayWalls() :void {
     /* Fonction qui choisit aléatoirement une map et qui l'affiche */
 
-    let pattern_number = Math.randomRange(1, 3);
+    //let pattern_number = Math.randomRange(1, 3);
 /*
     switch(pattern_number) {
         case 1:
