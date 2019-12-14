@@ -15,6 +15,18 @@ function patternOne() :void {
 
 function patternTwo() :void {
     /* Fonction dessinant les murs de la map 2 */
+    //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
+    //1ere ligne = horizontal partie gauche, puis vertical partie gauche, puis horizontal partie droite, et verticale partie droite
+    let murs = [[1, 50, 11, 50], [1, 78, 11, 78], [70, 54, 90, 54], [70, 74, 90, 74], [60, 0, 60, 10], [60, 128, 60, 118], [70, 64, 60,64], 
+    [11, 50, 11, 78], [70, 54, 70, 74], [90, 54, 90, 74], [60, 10, 100, 10], [], 
+    [160, 50, 150, 50], [160, 78, 150, 78], [100, 0, 100, 10], [100, 128, 100, 118], 
+    [150, 50, 150, 78], [60, 118, 100, 118], [80, 27, 80, 38], [80, 91, 80, 105]]
+
+    let j = 0;
+    while (j < murs.length) {
+        LCD1IN8.DrawLine(murs[j][0], murs[j][1], murs[j][2], murs[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
+        j++
+    }
 
 }
 
@@ -25,27 +37,27 @@ function patternThree() :void {
 
 function displayWalls() :void {
     /* Fonction qui choisit aléatoirement une map et qui l'affiche */
-
-    //let pattern_number = Math.randomRange(1, 3);
 /*
+    let pattern_number = Math.randomRange(2, 2);
+
     switch(pattern_number) {
-        case 1:
+        /*case 1:
             patternOne();
             break;
         
         case 2:
             patternTwo();
-            break;
-        
+            break;*/
+        /*
         case 3:
             patternThree();
             break;
         
         default:
-            patternOne();
+            patternTwo();
             break;
-    }
-*/
-    patternOne();
+    }*/
+
+    patternTwo();
     LCD1IN8.LCD_Display();
 }
