@@ -1,2 +1,4 @@
 // Ajouter votre code ici
-function randomWalls() {}
+//function randomWalls() {
+  //  x = 
+//}
