@@ -1,8 +1,40 @@
-// Ajouter votre code ici
-function randomWalls() {
-    let x_start = Math.randomRange(0, 165)
-    let x_end = x_start + Math.randomRange(25, 50)
-    let y = Math.randomRange(1, 120)
-    LCD1IN8.DrawLine(x_start, y, x_end, y, 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID)
-    LCD1IN8.LCD_Display()
+function patternOne() :void {
+    /* Fonction dessinant les murs de la map 1 */
+    
+}
+
+function patternTwo() :void {
+    /* Fonction dessinant les murs de la map 2 */
+
+}
+
+function patternThree() :void {
+    /* Fonction dessinant des murs de la map 3 */
+
+}
+
+function displayWalls() :void {
+    /* Fonction qui choisit aléatoirement une map et qui l'affiche */
+
+    let pattern_number = Math.randomRange(1, 3);
+
+    switch(pattern_number) {
+        case 1:
+            patternOne();
+            break;
+        
+        case 2:
+            patternTwo();
+            break;
+        
+        case 3:
+            patternThree();
+            break;
+        
+        default:
+            patternOne();
+            break;
+    }
+
+    LCD1IN8.LCD_Display();
 }
