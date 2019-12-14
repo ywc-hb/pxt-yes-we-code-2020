@@ -51,3 +51,23 @@ Célestine, Adrien et Thanusan : Design du projet
 
 [Rédiger en MarkDown](https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown) _(pour le readme.md)_
 
+
+
+
+
+
+
+# Espace réservé aux programmeurs #
+
+### Fonctionnalités ###
+
+- Générer les murs
+- 
+
+
+
+
+
+
+
+
