@@ -64,8 +64,11 @@ Célestine, Adrien et Thanusan : Design du projet
 - Générer les murs
 - 
 
+### Sites utiles ###
 
-
+Les couleurs : 
+- [Trouver le code RGB565](http://www.barth-dev.de/online/rgb565-color-picker/)
+- [Le convertir en décimal](https://www.python.org/shell/) _(utiliser la commande `int(str, 16)`)_
 
 
 
