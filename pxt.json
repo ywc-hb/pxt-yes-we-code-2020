@@ -10,7 +10,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "murs.ts"
+        "murs.ts",
+        "rebond.ts"
     ],
     "testFiles": [
         "test.ts"
