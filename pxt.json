@@ -11,11 +11,15 @@
         "README.md",
         "main.ts",
         "murs.ts",
-        "rebond.ts"
+        "rebond.ts",
+        "character.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": false,
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "supportedTargets": [
+        "microbit"
+    ]
 }
