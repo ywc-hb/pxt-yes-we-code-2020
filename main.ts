@@ -7,3 +7,4 @@ LCD1IN8.DrawCircle(16, 64, 2, 0, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1)
 displayWalls()
 
 
+
