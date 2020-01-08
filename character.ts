@@ -37,10 +37,12 @@ class Character {
     }
 
     set x(x_new: number) {
-        if(x_new <= 0 || x_new > 160) {
-            basic.showIcon(IconNames.Angry);
-            basic.pause(100);
-            basic.showNumber(200);
+        if(x_new <= 0) {
+            this._x = 1;
+        }
+
+        else if(x_new > 160) {
+            this._x = 160;
         }
 
         else {
@@ -49,10 +51,12 @@ class Character {
     }
 
     set y(y_new: number) {
-        if (y_new <= 0 || y_new > 128) {
-            basic.showIcon(IconNames.Angry);
-            basic.pause(100);
-            basic.showNumber(200);
+        if(y_new <= 0) {
+            this._y = 1;
+        }
+
+        else if(y_new > 128) {
+            this._y = 128;
         }
 
         else {
@@ -60,8 +64,8 @@ class Character {
         }
     }
 
-    set death(add: number) {
-        this._death += add;
+    set death(death_new: number) {
+        this._death = death_new;
     }
 
     //------------------- End of setters and getters ----------------------
