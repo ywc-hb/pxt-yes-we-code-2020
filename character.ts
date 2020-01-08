@@ -4,7 +4,7 @@ class Character {
     protected _x: number;
     protected _y: number;
     protected _color: number;
-    
+    protected rad: number;
 
     constructor(name: string, x: number, color: number) {
         this._name = name;
@@ -12,6 +12,7 @@ class Character {
         this._x = x;
         this._y = 64;
         this._color = color;
+        this.rad = 3;
     }
 
     //------------------- Setters and getters ----------------------
@@ -70,14 +71,72 @@ class Character {
 
     //------------------- End of setters and getters ----------------------
 
-    displayCharacter() {
-        LCD1IN8.DrawCircle(this.x, this.y, 3, this.color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
+    displayCharacter(color: number) {
+        LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - 4, this.y - 4, this.x + 4, this.y + 4);
     }
 
     move(x_vector: number, y_vector: number) {
-        this._x += x_vector
-        this._y += y_vector
-        this.displayCharacter()
+        this.displayCharacter(65535) //Effacement de l'ancienne position
+        //this._x += x_vector
+        //this._y += y_vector
+
+        //Définition des murs à tester en fonction de la position
+        let murs: number[][];
+        if(this._x <= 80 && this._y <= 64) {
+            let murs = [[1, 50, 16, 50], [31, 34, 56, 34], [36, 59, 46, 59], [70, 64, 80, 64], [18, 12, 48, 12], [18, 0, 18, 12], [48, 0, 48, 12], [80, 1, 80, 25], [80, 45, 80, 64], [36, 59, 36, 64], [46, 59, 46, 64]]
+        }
+        else if(this._x <= 80 && this._y >= 64) {
+            let murs = [[1, 78, 16, 78], [31, 94, 56, 94], [36, 69, 46, 69], [70, 64, 80, 64], [18, 116, 48, 116], [18, 116, 18, 128], [48, 116, 48, 128], [80, 64, 80, 85], [80, 103, 80, 128], [36, 64, 36, 69], [46, 64, 46, 69]]
+        }
+        else if(this._x >= 80 && this._y <= 64) {
+            let murs = [[80, 1, 80, 25], [80, 45, 80, 64], [160, 50, 145, 50], [130, 34, 105, 34], [125, 59, 115, 59], [142, 12, 112, 12], [142, 0, 142, 12], [112, 0, 112, 12], [125, 59, 125, 64], [115, 59, 115, 64], [80, 64, 90, 64]]
+        }
+        else {
+            let murs = [[80, 64, 90, 64], [80, 64, 80, 85], [80, 103, 80, 128], [160, 78, 144, 78], [130, 94, 105, 94], [125, 69, 115, 69], [142, 116, 112, 116], [142, 116, 142, 128], [112, 116, 112, 128], [125, 64, 125, 69], [115, 64, 115, 69]]
+        }
+
+/* Nommage des positions : 
+        ---B---
+      /         \
+     /           \
+    |             |
+    E      A      C
+    |             |
+     \           /
+      \         /
+        ---D---
+*/
+        for (let i = 0; i < murs.length; i++) {
+            //Test de la position D
+            if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y + this.rad >= murs[i][1] && this._y + this.rad <= murs[i][3]) {
+                basic.showNumber(0)
+                this._y -= y_vector
+                this._x += x_vector
+            }
+
+            //Test de la position B
+            else if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y - this.rad >= murs[i][1] && this._y - this.rad <= murs[i][3]) {
+                basic.showNumber(1)
+                this._y -= y_vector
+                this._x += x_vector
+            }
+
+            //Test de la position C
+            if (this._x + this.rad >= murs[i][0] && this._x + this.rad <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3]) {
+                basic.showNumber(2)
+                this._x -= x_vector
+                this._y += y_vector
+            }
+
+            //Test de la position E
+            else if (this._x - this.rad >= murs[i][0] && this._x - this.rad <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3]) {
+                basic.showNumber(3)
+                this._x -= x_vector
+                this._y += y_vector
+            }
+        }
+        
+        this.displayCharacter(this.color) //Affichage de la nouvelle position
     }
 } 

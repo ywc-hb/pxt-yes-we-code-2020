@@ -42,7 +42,6 @@ for(let i = 0; i < murs.length; i++) {
         vec[1] = -vec[1]
     }
 
-    basic.pause(10)
     //Test de la position C
     if (pos[0] + rad >= murs[i][0] && pos[0] + rad <= murs[i][2] && pos[1] >= murs[i][1] && pos[1] <= murs[i][3]) {
         basic.showNumber(2)

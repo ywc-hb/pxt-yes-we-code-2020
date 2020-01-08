@@ -1,4 +1,4 @@
-function patternOne(): void {
+function patternOne(): {mursNO: number[][], mursNE: number[][], mursSE: number[][], mursSO: number[][]} {
     /* Fonction dessinant les murs de la map 1 */
     //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
     //1ere ligne = horizontal partie gauche, puis vertical partie gauche, puis horizontal partie droite, et verticale partie droite
@@ -19,10 +19,17 @@ function patternOne(): void {
         LCD1IN8.DrawLine(murs[j][0], murs[j][1], murs[j][2], murs[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
         j++
     }
-}
 
-function patternTwo(): void {
-    /* Fonction dessinant les murs de la map 2 */
+    return {
+        mursNO: mursNO, 
+        mursNE: mursNE, 
+        mursSO: mursSO, 
+        mursSE: mursSE
+    };
+}
+/*
+function patternTwo() {
+    //Fonction dessinant les murs de la map 2
     //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
     //1ere ligne = horizontal partie gauche, puis vertical partie gauche, puis horizontal partie droite, et verticale partie droite
     let murs = [[1, 50, 11, 50], [1, 78, 11, 78], [70, 54, 90, 54], [70, 74, 90, 74], [60, 0, 60, 10], [60, 128, 60, 118], [55, 60, 55, 68], [20, 33, 38, 33], [20, 93, 38, 93],
@@ -37,23 +44,29 @@ function patternTwo(): void {
         j++
     }
 
+    return {
+        mursNO: mursNO,
+        mursNE: mursNE,
+        mursSO: mursSO,
+        mursSE: mursSE
+    };
 }
 
 function patternThree(): void {
-    /* Fonction dessinant des murs de la map 3 */
+    //Fonction dessinant des murs de la map 3
 
 }
-
+*/
 function displayWalls(): void {
-    /* Fonction qui choisit aléatoirement une map et qui l'affiche */
+    //Fonction qui choisit aléatoirement une map et qui l'affiche
 
-    let pattern_number = Math.randomRange(1, 1);
+    let pattern_number = Math.randomRange(1, 1); //A modifier en fonction des patterns prets à l'emploi
 
     switch (pattern_number) {
         case 1:
             patternOne();
             break;
-
+/*
         case 2:
             patternTwo();
             break;
@@ -61,9 +74,9 @@ function displayWalls(): void {
         case 3:
             patternThree();
             break;
-
+*/
         default:
-            patternTwo();
+            patternOne();
             break;
     }
 
