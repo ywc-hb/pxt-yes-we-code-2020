@@ -1,0 +1,5 @@
+Les codes commençants par 0, 8 ou 9 sont des erreurs systèmes réservées à l'diteur MakeCode ainsi qu'à la microbit. Voir ici pour plus d'infos, voir ici : https://support.microbit.org/support/solutions/articles/19000016969-micro-bit-error-codes
+
+
+Code  :  Signification
+200   :  Coordonnée x ou y en dehors de l'écran
