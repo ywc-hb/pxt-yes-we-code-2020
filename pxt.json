@@ -14,7 +14,8 @@
         "murs.ts",
         "rebond.ts",
         "Jouabilite.ts",
-        "Character.ts"
+        "Character.ts",
+        "Walls.ts"
     ],
     "testFiles": [
         "test.ts"
