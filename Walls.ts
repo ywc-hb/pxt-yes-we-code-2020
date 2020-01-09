@@ -57,7 +57,7 @@ class Walls {
         return this._wallsNO;
     }
 
-    patternOne(): { wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][] } {
+    private patternOne(): { wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][] } {
         /* Fonction dessinant les murs de la map 1 */
         //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
         //1ere ligne = horizontal partie gauche, puis vertical partie gauche, puis horizontal partie droite, et verticale partie droite
