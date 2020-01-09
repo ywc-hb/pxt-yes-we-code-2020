@@ -6,18 +6,27 @@ class Walls {
     protected _wallsSE: number[][];
 
     constructor() {
-        let choice = Math.randomRange(1, 1)
-        if (choice == 1) {
-            this._wallsNE = this.patternOne().wallsNE;
-            this._wallsNO = this.patternOne().wallsNO;
-            this._wallsSE = this.patternOne().wallsSE;
-            this._wallsSO = this.patternOne().wallsSO;
-        }       
-        else if(choice == 2) {
-            this._wallsNE = this.patternTwo().wallsNE;
-            this._wallsNO = this.patternTwo().wallsNO;
-            this._wallsSE = this.patternTwo().wallsSE;
-            this._wallsSO = this.patternTwo().wallsSO;
+        switch(Math.randomRange(1, 2)) {
+            case 1:
+                this._wallsNE = this.patternOne().wallsNE;
+                this._wallsNO = this.patternOne().wallsNO;
+                this._wallsSE = this.patternOne().wallsSE;
+                this._wallsSO = this.patternOne().wallsSO;
+                break;
+
+            case 2: 
+                this._wallsNE = this.patternTwo().wallsNE;
+                this._wallsNO = this.patternTwo().wallsNO;
+                this._wallsSE = this.patternTwo().wallsSE;
+                this._wallsSO = this.patternTwo().wallsSO;
+                break;
+            
+            default:
+                this._wallsNE = this.patternOne().wallsNE;
+                this._wallsNO = this.patternOne().wallsNO;
+                this._wallsSE = this.patternOne().wallsSE;
+                this._wallsSO = this.patternOne().wallsSO;
+                break;
         }
 
         let walls = this._wallsSO.concat(this._wallsNO).concat(this._wallsNE).concat(this._wallsSE);
