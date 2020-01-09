@@ -7,17 +7,12 @@ let test = new Character("Test", 20, 64512, walls)
 input.onButtonPressed(Button.A, function () {
     test.move(-1, 0)
 })
-
 input.onButtonPressed(Button.B, function () {
     test.move(1, 0)
 })
-
 input.onButtonPressed(Button.AB, function () {
     test.move(0, -1)
 })
-
 input.onPinPressed(TouchPin.P0, function () {
     test.move(0, 1)
 })
-
-
