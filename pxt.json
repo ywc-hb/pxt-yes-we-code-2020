@@ -13,7 +13,8 @@
         "main.ts",
         "murs.ts",
         "rebond.ts",
-        "character.ts"
+        "Jouabilite.ts",
+        "Character.ts"
     ],
     "testFiles": [
         "test.ts"
