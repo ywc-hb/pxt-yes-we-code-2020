@@ -11,8 +11,6 @@
     "files": [
         "README.md",
         "main.ts",
-        "murs.ts",
-        "rebond.ts",
         "Jouabilite.ts",
         "Character.ts",
         "Walls.ts",

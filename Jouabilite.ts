@@ -4,64 +4,67 @@ class Jouabilite {
     protected _y: number;
     protected _color: number;
     protected rad: number;
+    protected _pattern: Walls;
 
-constructor(name: string, x: number, color: number) {
-    this._name = name;
-    this._x = x;
-    this._y = 64;
-    this._color = color;
-    this.rad = 3;
-    this.displayCharacter(this.color)
-}
-
-//------------------- Setters and getters ----------------------
-
-get name(): string {
-    return this._name;
-}
-
-get x(): number {
-    return this._x;
-}
-
-get y(): number {
-    return this._y;
-}
-
-get color(): number {
-    return this._color;
-}
-
-set x(x_new: number) {
-    if (x_new <= 0) {
-        this._x = 1;
+    constructor(name: string, x: number, color: number, pattern: Walls) {
+        this._name = name;
+        this._x = x;
+        this._y = 64;
+        this._color = color;
+        this.rad = 3;
+        this._pattern = pattern;
+        this.displayCharacter(this.color);
     }
 
-    else if (x_new > 160) {
-        this._x = 160;
+    //------------------- Setters and getters ----------------------
+
+    get name(): string {
+        return this._name;
     }
 
-    else {
-        this._x = x_new;
-    }
-}
-
-set y(y_new: number) {
-    if (y_new <= 0) {
-        this._y = 1;
+    get x(): number {
+        return this._x;
     }
 
-    else if (y_new > 128) {
-        this._y = 128;
+    get y(): number {
+        return this._y;
     }
 
-    else {
-        this._y = y_new;
+    get color(): number {
+        return this._color;
     }
-}
 
+    get pattern(): Walls {
+        return this._pattern;
+    }
 
+    set x(x_new: number) {
+        if(x_new - this.rad <= 0) {
+            this._x = 1 + this.rad;
+        }
 
+        else if(x_new + this.rad > 160) {
+            this._x = 160 - this.rad;
+        }
+
+        else {
+            this._x = x_new;
+        }
+    }
+
+    set y(y_new: number) {
+        if(y_new - this.rad <= 0) {
+            this._y = 1 + this.rad;
+        }
+
+        else if(y_new + this.rad > 128) {
+            this._y = 128 - this.rad;
+        }
+
+        else {
+            this._y = y_new;
+        }
+    }
     //------------------- End of setters and getters ----------------------
 
     protected displayCharacter(color: number): void {
@@ -74,18 +77,19 @@ set y(y_new: number) {
 
         //Définition des murs à tester en fonction de la position
         let murs: number[][];
-        if (this._x <= 80 && this._y <= 64) {
-            murs = [[1, 50, 16, 50], [31, 34, 56, 34], [36, 59, 46, 59], [70, 64, 80, 64], [18, 12, 48, 12], [18, 0, 18, 12], [48, 0, 48, 12], [80, 1, 80, 25], [80, 45, 80, 64], [36, 59, 36, 64], [46, 59, 46, 64]]
+        if (this.x <= 80 && this.y <= 64) {
+            murs = this._pattern.wallsNO;
         }
-        else if (this._x <= 80 && this._y >= 64) {
-            murs = [[1, 78, 16, 78], [31, 94, 56, 94], [36, 69, 46, 69], [70, 64, 80, 64], [18, 116, 48, 116], [18, 116, 18, 128], [48, 116, 48, 128], [80, 64, 80, 85], [80, 103, 80, 128], [36, 64, 36, 69], [46, 64, 46, 69]]
+        else if (this.x <= 80 && this.y >= 64) {
+            murs = this._pattern.wallsSO;
         }
-        else if (this._x >= 80 && this._y <= 64) {
-            murs = [[80, 1, 80, 25], [80, 45, 80, 64], [160, 50, 145, 50], [130, 34, 105, 34], [125, 59, 115, 59], [142, 12, 112, 12], [142, 0, 142, 12], [112, 0, 112, 12], [125, 59, 125, 64], [115, 59, 115, 64], [80, 64, 90, 64]]
+        else if (this.x >= 80 && this.y <= 64) {
+            murs = this._pattern.wallsNE;
         }
         else {
-            murs = [[80, 64, 90, 64], [80, 64, 80, 85], [80, 103, 80, 128], [160, 78, 144, 78], [130, 94, 105, 94], [125, 69, 115, 69], [142, 116, 112, 116], [142, 116, 142, 128], [112, 116, 112, 128], [125, 64, 125, 69], [115, 64, 115, 69]]
+            murs = this._pattern.wallsSE;
         }
+
 
         /* Nommage des positions : 
                 ---B---
@@ -101,34 +105,34 @@ set y(y_new: number) {
 
         for (let i = 0; i < murs.length; i++) {
             //Test de la position D
-            if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y + (this.rad + 1) >= murs[i][1] && this._y + (this.rad + 1) <= murs[i][3] && y_vector > 0) {
-                y_vector = 0
+            if (this.x >= murs[i][0] && this.x <= murs[i][2] && this.y + (this.rad + 1) >= murs[i][1] && this.y + (this.rad + 1) <= murs[i][3] && y_vector > 0) {
+                y_vector = 0;
             }
 
             //Test de la position B
-            else if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y - (this.rad + 1) >= murs[i][1] && this._y - (this.rad + 1) <= murs[i][3] && y_vector < 0) {
-                y_vector = 0
+            else if (this.x >= murs[i][0] && this.x <= murs[i][2] && this.y - (this.rad + 1) >= murs[i][1] && this.y - (this.rad + 1) <= murs[i][3] && y_vector < 0) {
+                y_vector = 0;
             }
 
             //Test de la position C
-            if (this._x + (this.rad + 1) >= murs[i][0] && this._x + (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3] && x_vector > 0) {
-                x_vector = 0
+            if (this.x + (this.rad + 1) >= murs[i][0] && this.x + (this.rad + 1) <= murs[i][2] && this.y >= murs[i][1] && this.y <= murs[i][3] && x_vector > 0) {
+                x_vector = 0;
             }
 
             //Test de la position E
-            else if (this._x - (this.rad + 1) >= murs[i][0] && this._x - (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3] && x_vector < 0) {
-                x_vector = 0
+            else if (this.x - (this.rad + 1) >= murs[i][0] && this.x - (this.rad + 1) <= murs[i][2] && this.y >= murs[i][1] && this.y <= murs[i][3] && x_vector < 0) {
+                x_vector = 0;
             }
         }
         return {
             x_vector: x_vector,
             y_vector: y_vector
-        }
+        };
     }
 } 
 
 /*
 si dans balle alors tester si y'a un resultat egale à 0 ; si oui --> inverser celui concerné ; si non --> ajouter les valeurs aux cooredonnes
-si dans character --> ajouter les valeurs retornées aux coordonnées
+si dans character --> ajouter les valeurs retournées aux coordonnées
 */
 
