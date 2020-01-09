@@ -89,34 +89,35 @@ set y(y_new: number) {
 
         /* Nommage des positions : 
                 ---B---
-            /         \
-            /           \
+              /         \
+             /           \
             |             |
             E      A      C
             |             |
-            \           /
-            \         /
+             \           /
+              \         /
                 ---D---
         */
+
         for (let i = 0; i < murs.length; i++) {
             //Test de la position D
-            if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y + (this.rad + 1) >= murs[i][1] && this._y + (this.rad + 1) <= murs[i][3]) {
-                y_vector = -y_vector
+            if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y + (this.rad + 1) >= murs[i][1] && this._y + (this.rad + 1) <= murs[i][3] && y_vector > 0) {
+                y_vector = 0
             }
 
             //Test de la position B
-            else if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y - (this.rad + 1) >= murs[i][1] && this._y - (this.rad + 1) <= murs[i][3]) {
-                y_vector = -y_vector
+            else if (this._x >= murs[i][0] && this._x <= murs[i][2] && this._y - (this.rad + 1) >= murs[i][1] && this._y - (this.rad + 1) <= murs[i][3] && y_vector < 0) {
+                y_vector = 0
             }
 
             //Test de la position C
-            if (this._x + (this.rad + 1) >= murs[i][0] && this._x + (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3]) {
-                x_vector = -x_vector
+            if (this._x + (this.rad + 1) >= murs[i][0] && this._x + (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3] && x_vector > 0) {
+                x_vector = 0
             }
 
             //Test de la position E
-            else if (this._x - (this.rad + 1) >= murs[i][0] && this._x - (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3]) {
-                x_vector = -x_vector
+            else if (this._x - (this.rad + 1) >= murs[i][0] && this._x - (this.rad + 1) <= murs[i][2] && this._y >= murs[i][1] && this._y <= murs[i][3] && x_vector < 0) {
+                x_vector = 0
             }
         }
         return {

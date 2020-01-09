@@ -18,14 +18,12 @@ class Character extends Jouabilite {
 
     //------------------- End of setters and getters ----------------------
 
-    protected displayCharacter(color: number): void {
-        LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
-        LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
-    }
-
     public move(x_vector: number, y_vector: number): void {
-        this.x += this.movement(x_vector, y_vector).x_vector;
-        this.y += this.movement(x_vector, y_vector).y_vector;
+        let vectors = this.movement(x_vector, y_vector);
+        this.x += vectors.x_vector;
+        this.y += vectors.y_vector;
+
+        this.displayCharacter(this.color)
 
     }
 }
