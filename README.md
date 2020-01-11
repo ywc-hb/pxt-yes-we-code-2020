@@ -4,7 +4,7 @@
 
 ## Présentation de notre projet ##
 
-Notre projet dans le cadre du concours _Yes We Code 2020_ est un jeu vidéo. Notre jeu vidéo s'appelle : **_Insérer ici un nom de jeu_** !
+Notre projet dans le cadre du concours _Yes We Code 2020_ est un jeu vidéo. Notre jeu vidéo s'appelle : _LabTouch_ !
 
 Le but est simple : toucher l'adversaire sans se faire toucher. Mais ne désespérez pas pour autant si vous êtes touché(e) ! Vous pouvez revivre en tapant un code d'une certaine taille au début de la partie ! Bien évidemment, une fois ce code utilisé, la microbit vous en donnera un autre plus long cette fois-ci, et donc plus compliqué à retenir.
 
@@ -30,7 +30,7 @@ Vous ne trouvez pas la manette ? C'est normal, la manette, c'est le t-shirt !
 
 ### Répartition des tâches ###
 
-Maxime et Grégoire : développement de l'application
+Maxime, Grégoire et Célestine : développement de l'application
 
 Élios : Création du trailer
 
@@ -62,7 +62,6 @@ Célestine, Adrien et Thanusan : Design du projet
 ### Fonctionnalités ###
 
 - Générer les murs
-- 
 
 ### Sites utiles ###
 
