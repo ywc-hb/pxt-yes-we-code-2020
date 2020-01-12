@@ -116,7 +116,7 @@ class Jouabilite {
                     closest = [murs[i][0], murs[i][1]];
                 }
                 else if(this.y - this.rad - 1 > murs[i][1] && this.y - this.rad - 1 < murs[i][3]) {
-                    closest = [murs[i][0], murs[i][3]];
+                    closest = [murs[i][2], murs[i][3]];
                 }
 
                 if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
@@ -136,7 +136,7 @@ class Jouabilite {
                     closest = [murs[i][0], murs[i][1]];
                 }
                 else if (this.x - this.rad - 1 > murs[i][0] && this.x - this.rad - 1 < murs[i][2]) {
-                    closest = [murs[i][2], murs[i][1]];
+                    closest = [murs[i][2], murs[i][3]];
                 }
 
                 if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
