@@ -3,15 +3,15 @@ class Jouabilite {
     protected _x: number;
     protected _y: number;
     protected _color: number;
-    protected rad: number;
+    protected _rad: number;
     protected _pattern: Walls;
 
-    constructor(name: string, x: number, color: number, pattern: Walls) {
+    constructor(name: string, x: number, y: number, color: number, rad: number, pattern: Walls) {
         this._name = name;
         this._x = x;
-        this._y = 64;
+        this._y = y;
         this._color = color;
-        this.rad = 3;
+        this._rad = rad;
         this._pattern = pattern;
         this.displayCharacter(this.color);
     }
@@ -36,6 +36,10 @@ class Jouabilite {
 
     get pattern(): Walls {
         return this._pattern;
+    }
+
+    get rad(): number {
+        return this._rad;
     }
 
     set x(x_new: number) {
@@ -73,8 +77,6 @@ class Jouabilite {
     }
 
     protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number } {
-        this.displayCharacter(65535) //Effacement de l'ancienne position
-
         //Définition des murs à tester en fonction de la position
         let murs: number[][];
         if (this.x <= 80 && this.y <= 64) {
@@ -124,15 +126,31 @@ class Jouabilite {
                 x_vector = 0;
             }
         }
+/*
+        //Test des bords de l'écran
+        //Test de la position D
+        if (this.y + (this.rad + 1) >= 128) {
+            y_vector = 0;
+        }
+
+        //Test de la position B
+        else if (this.y - (this.rad + 1) <= 1) {
+            y_vector = 0;
+        }
+
+        //Test de la position C
+        if (this.x + (this.rad + 1) >= 160) {
+            x_vector = 0;
+        }
+
+        //Test de la position E
+        else if (this.x - (this.rad + 1) <= 1) {
+            x_vector = 0;
+        }
+*/
         return {
             x_vector: x_vector,
             y_vector: y_vector
         };
     }
 } 
-
-/*
-si dans balle alors tester si y'a un resultat egale à 0 ; si oui --> inverser celui concerné ; si non --> ajouter les valeurs aux cooredonnes
-si dans character --> ajouter les valeurs retournées aux coordonnées
-*/
-

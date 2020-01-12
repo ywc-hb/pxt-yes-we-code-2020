@@ -2,7 +2,7 @@ class Character extends Jouabilite {
     protected _death: number;
 
     constructor(name: string, x: number, color: number, pattern: Walls) {
-        super(name, x, color, pattern);
+        super(name, x, 64, color, 3, pattern);
         this._death = 0;
     }
 
@@ -20,6 +20,7 @@ class Character extends Jouabilite {
 
     public move(x_vector: number, y_vector: number): void {
         let vectors = this.movement(x_vector, y_vector);
+        this.displayCharacter(65535) //Effacement de l'ancienne position
         this.x += vectors.x_vector;
         this.y += vectors.y_vector;
         this.displayCharacter(this.color);
