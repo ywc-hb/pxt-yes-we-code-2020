@@ -93,17 +93,8 @@ class Jouabilite {
         }
 
 
-        /* Nommage des positions : 
-                ---B---
-              /         \
-             /           \
-            |             |
-            E      A      C
-            |             |
-             \           /
-              \         /
-                ---D---
-        */
+        /* Erreur lorsque le perso arrive par une pointe d'un murs --> ne se bloque pas */
+        
         for (let i = 0; i < murs.length; i++) {
             //Test des positions influants sur le vecteur x
             if(murs[i][0] == murs[i][2] && x_vector != 0) {
