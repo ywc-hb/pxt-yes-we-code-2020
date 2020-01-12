@@ -119,8 +119,8 @@ class Jouabilite {
                     closest = [murs[i][0], murs[i][3]];
                 }
 
-                if (Math.abs(closest[1] - this.y) <= (this.rad + 1) && Math.abs(closest[0] - this.x) <= (this.rad + 1)) {
-                    if (Math.abs(closest[1] - (this.y + y_vector)) <= (this.rad + 1) && Math.abs(closest[0] - (this.x + x_vector)) <= (this.rad + 1)) {
+                if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
+                    if (Math.sqrt(Math.pow(this.x + x_vector - closest[0], 2) + Math.pow(this.y + y_vector - closest[1], 2)) <= this.rad + 1) {
                         x_vector = 0;
                     }
                 }
@@ -139,8 +139,8 @@ class Jouabilite {
                     closest = [murs[i][2], murs[i][1]];
                 }
 
-                if (Math.abs(closest[1] - this.y) <= (this.rad + 1) && Math.abs(closest[0] - this.x) <= (this.rad + 1)) {
-                    if (Math.abs(closest[1] - (this.y + y_vector)) <= (this.rad + 1) && Math.abs(closest[0] - (this.x + x_vector)) <= (this.rad + 1)) {
+                if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
+                    if (Math.sqrt(Math.pow(this.x + x_vector - closest[0], 2) + Math.pow(this.y + y_vector - closest[1], 2)) <= this.rad + 1) {
                         y_vector = 0;
                     }
                 }
