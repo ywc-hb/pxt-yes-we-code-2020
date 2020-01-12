@@ -104,50 +104,49 @@ class Jouabilite {
               \         /
                 ---D---
         */
-
         for (let i = 0; i < murs.length; i++) {
-            //Test de la position D
-            if (this.x >= murs[i][0] && this.x <= murs[i][2] && this.y + (this.rad + 1) >= murs[i][1] && this.y + (this.rad + 1) <= murs[i][3] && y_vector > 0) {
-                y_vector = 0;
+            //Test des positions influants sur le vecteur x
+            if(murs[i][0] == murs[i][2] && x_vector != 0) {
+                //Définition du point le plus proche du cercle
+                let closest = [280, 280];
+                if(this.y > murs[i][1] && this.y < murs[i][3]) {
+                    closest = [murs[i][0], this.y];
+                }
+                else if(this.y + this.rad + 1 > murs[i][1] && this.y + this.rad + 1 < murs[i][3]) {
+                    closest = [murs[i][0], murs[i][1]];
+                }
+                else if(this.y - this.rad - 1 > murs[i][1] && this.y - this.rad - 1 < murs[i][3]) {
+                    closest = [murs[i][0], murs[i][3]];
+                }
+
+                if (Math.abs(closest[1] - this.y) <= (this.rad + 1) && Math.abs(closest[0] - this.x) <= (this.rad + 1)) {
+                    if (Math.abs(closest[1] - (this.y + y_vector)) <= (this.rad + 1) && Math.abs(closest[0] - (this.x + x_vector)) <= (this.rad + 1)) {
+                        x_vector = 0;
+                    }
+                }
             }
 
-            //Test de la position B
-            else if (this.x >= murs[i][0] && this.x <= murs[i][2] && this.y - (this.rad + 1) >= murs[i][1] && this.y - (this.rad + 1) <= murs[i][3] && y_vector < 0) {
-                y_vector = 0;
+            //Test des positions influants sur le vecteur y
+            else if (murs[i][1] == murs[i][3]) {
+                let closest = [280, 280];
+                if (this.x > murs[i][0] && this.x < murs[i][2]) {
+                    closest = [this.x, murs[i][1]];
+                }
+                else if (this.x + this.rad + 1 > murs[i][0] && this.x + this.rad + 1 < murs[i][2]) {
+                    closest = [murs[i][0], murs[i][1]];
+                }
+                else if (this.x - this.rad - 1 > murs[i][0] && this.x - this.rad - 1 < murs[i][2]) {
+                    closest = [murs[i][2], murs[i][1]];
+                }
+
+                if (Math.abs(closest[1] - this.y) <= (this.rad + 1) && Math.abs(closest[0] - this.x) <= (this.rad + 1)) {
+                    if (Math.abs(closest[1] - (this.y + y_vector)) <= (this.rad + 1) && Math.abs(closest[0] - (this.x + x_vector)) <= (this.rad + 1)) {
+                        y_vector = 0;
+                    }
+                }
             }
-
-            //Test de la position C
-            if (this.x + (this.rad + 1) >= murs[i][0] && this.x + (this.rad + 1) <= murs[i][2] && this.y >= murs[i][1] && this.y <= murs[i][3] && x_vector > 0) {
-                x_vector = 0;
-            }
-
-            //Test de la position E
-            else if (this.x - (this.rad + 1) >= murs[i][0] && this.x - (this.rad + 1) <= murs[i][2] && this.y >= murs[i][1] && this.y <= murs[i][3] && x_vector < 0) {
-                x_vector = 0;
-            }
-        }
-/*
-        //Test des bords de l'écran
-        //Test de la position D
-        if (this.y + (this.rad + 1) >= 128) {
-            y_vector = 0;
         }
 
-        //Test de la position B
-        else if (this.y - (this.rad + 1) <= 1) {
-            y_vector = 0;
-        }
-
-        //Test de la position C
-        if (this.x + (this.rad + 1) >= 160) {
-            x_vector = 0;
-        }
-
-        //Test de la position E
-        else if (this.x - (this.rad + 1) <= 1) {
-            x_vector = 0;
-        }
-*/
         return {
             x_vector: x_vector,
             y_vector: y_vector
