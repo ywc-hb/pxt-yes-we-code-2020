@@ -5,7 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "pxt-microbit": "github:ywc-hb/pxt-microbit-screen#v1.2.4",
+        "pxt-microbit": "github:ywc-hb/pxt-microbit-screen#v1.2.5",
         "LCD1in8": "github:waveshare/wslcd1in8#2129a72397d5689c52007d92966a01d7f7cf3700"
     },
     "files": [
