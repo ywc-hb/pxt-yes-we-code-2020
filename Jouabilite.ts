@@ -91,49 +91,49 @@ class Jouabilite {
         else {
             murs = this._pattern.wallsSE;
         }
-
-
-        /* Erreur lorsque le perso arrive par une pointe d'un murs --> ne se bloque pas */
         
         for (let i = 0; i < murs.length; i++) {
-            //Test des positions influants sur le vecteur x
-            if(murs[i][0] == murs[i][2] && x_vector != 0) {
+            //Test des positions influants sur le vecteur y
+            if(murs[i][0] === murs[i][2]) {
                 //Définition du point le plus proche du cercle
-                let closest = [280, 280];
-                if(this.y > murs[i][1] && this.y < murs[i][3]) {
-                    closest = [murs[i][0], this.y];
+                let closest = [murs[i][0], 300];
+                if(this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
+                    closest[1] = this.y;
                 }
-                else if(this.y + this.rad + 1 > murs[i][1] && this.y + this.rad + 1 < murs[i][3]) {
-                    closest = [murs[i][0], murs[i][1]];
+                else if(this.y + y_vector < murs[i][1]) {
+                    closest[1] = murs[i][1];
                 }
-                else if(this.y - this.rad - 1 > murs[i][1] && this.y - this.rad - 1 < murs[i][3]) {
-                    closest = [murs[i][2], murs[i][3]];
+                else if(this.y + y_vector > murs[i][3]) {
+                    closest[1] = murs[i][3];
                 }
 
-                if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
-                    if (Math.sqrt(Math.pow(this.x + x_vector - closest[0], 2) + Math.pow(this.y + y_vector - closest[1], 2)) <= this.rad + 1) {
-                        x_vector = 0;
-                    }
+                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {  
+                    y_vector = 0;
+                }
+                else if (Math.sqrt(Math.pow((this.x + x_vector) - closest[0], 2) + Math.pow((this.y) - closest[1], 2)) < this.rad + 1) {
+                    x_vector = 0;
                 }
             }
 
             //Test des positions influants sur le vecteur y
-            else if (murs[i][1] == murs[i][3]) {
-                let closest = [280, 280];
-                if (this.x > murs[i][0] && this.x < murs[i][2]) {
-                    closest = [this.x, murs[i][1]];
-                }
-                else if (this.x + this.rad + 1 > murs[i][0] && this.x + this.rad + 1 < murs[i][2]) {
-                    closest = [murs[i][0], murs[i][1]];
-                }
-                else if (this.x - this.rad - 1 > murs[i][0] && this.x - this.rad - 1 < murs[i][2]) {
-                    closest = [murs[i][2], murs[i][3]];
-                }
+            else if (murs[i][1] === murs[i][3]) {
+                let closest = [300, murs[i][1]];
 
-                if (Math.sqrt(Math.pow(this.x - closest[0], 2) + Math.pow(this.y - closest[1], 2)) <= this.rad + 1) {
-                    if (Math.sqrt(Math.pow(this.x + x_vector - closest[0], 2) + Math.pow(this.y + y_vector - closest[1], 2)) <= this.rad + 1) {
-                        y_vector = 0;
-                    }
+                if (this.x + x_vector >= murs[i][0] && this.x + x_vector <= murs[i][2]) {
+                    closest[0] = this.x;
+                }
+                else if (this.x + x_vector < murs[i][0]) {
+                    closest[0] = murs[i][0];
+                }
+                else if (this.x + x_vector > murs[i][2]) {
+                    closest[0] = murs[i][2];
+                }
+                
+                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
+                    y_vector = 0;
+                }
+                else if (Math.sqrt(Math.pow((this.x + x_vector) - closest[0], 2) + Math.pow((this.y) - closest[1], 2)) < this.rad + 1) {
+                    x_vector = 0;
                 }
             }
         }
