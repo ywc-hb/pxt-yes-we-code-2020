@@ -25,5 +25,16 @@ class Character extends Jouabilite {
         this.y += vectors.y_vector;
         this.displayCharacter(this.color);
     }
+    public reviveCode(action: boolean) {
+        //'action vaut 'false' s'il faut donner le code et 'true' s'il faut le tester
+        let fleche = images.createImage(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `)
+    }
+
 }
 
