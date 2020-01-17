@@ -48,7 +48,7 @@ class Character extends Jouabilite {
                     continue
                 }
                 else {
-                    images.iconImage(IconNames.Sad);
+                    images.iconImage(IconNames.Sad).showImage(0);
                     basic.pause(1);
                     return(1); // Voir quoi retourner si le code est erroné...
                 }
