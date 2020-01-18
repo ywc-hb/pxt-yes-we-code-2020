@@ -9,11 +9,9 @@ class Character extends Jouabilite {
     }
 
     //------------------- Setters and getters ----------------------
-
     get death(): number {
         return this._death;
     }
-
     set death(death_new: number) {
         this._death = death_new;
     }
@@ -29,7 +27,6 @@ class Character extends Jouabilite {
     }
     public reviveCode(action: boolean, list_items?: number[]): number | void {
         //'action vaut 'false' s'il faut donner le code et 'true' s'il faut le tester
-
         let list_possibilities = [images.arrowImage(ArrowNames.North), images.arrowImage(ArrowNames.South), images.arrowImage(ArrowNames.East), images.arrowImage(ArrowNames.West), 
             images.iconImage(IconNames.Square), images.iconImage(IconNames.Triangle)]
         
@@ -49,7 +46,6 @@ class Character extends Jouabilite {
                 basic.pause(100)
             }
         }
-
         else {
             for (let i = 0; i < list_items.length; i++) {
                 if (list_possibilities[list_items[i]] === this._reviveCode[i]) {
@@ -62,9 +58,6 @@ class Character extends Jouabilite {
                 }
             }
         }
-
-
     }
-
 }
 
