@@ -35,10 +35,16 @@ class Character extends Jouabilite {
         
         if (!action) {
             this._reviveCode = [];
+            let index_prec: number = -1;
+            let index: number = index_prec;
             for (let i = 0; i < (this.death + 1) * 2; i++) {
-                this._reviveCode.push(list_possibilities[Math.randomRange(0, list_possibilities.length)]);
+                while(index === index_prec) {
+                    index = Math.randomRange(0, list_possibilities.length - 1);
+                }
+                this._reviveCode.push(list_possibilities[index]);
+                index_prec = index;
                 this._reviveCode[i].showImage(0)
-                basic.pause(2000 / (this.death + 1))
+                basic.pause(1500 / (this.death + 1))
                 basic.clearScreen()
                 basic.pause(100)
             }
