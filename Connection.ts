@@ -1,10 +1,7 @@
-// Ajouter votre code ici
+// Ajouter le nom de la 99 ici
 class Connection {
-    protected _channel: number;
-
     constructor(channel: number) {
-        this._channel = channel;
-        radio.setGroup(this._channel);
-        radio.setTransmitPower(255);
+        radio.setGroup(channel);
+        radio.setTransmitPower(7);
     }
 }

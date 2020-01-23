@@ -18,5 +18,3 @@ input.onButtonPressed(Button.AB, function () {
 input.onPinPressed(TouchPin.P0, function () {
     test.move(0, 1);
 })
-
-
