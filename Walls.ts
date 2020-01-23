@@ -6,7 +6,7 @@ class Walls {
     protected _wallsSE: number[][];
 
     constructor() {
-        switch(Math.randomRange(1, 1)) {
+        switch(Math.randomRange(1, 2)) {
             case 1:
                 this._wallsNE = this.patternOne().wallsNE;
                 this._wallsNO = this.patternOne().wallsNO;

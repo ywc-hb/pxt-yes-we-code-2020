@@ -7,16 +7,12 @@ class Character extends Jouabilite {
     }
 
     //------------------- Setters and getters ----------------------
-
     get death(): number {
         return this._death;
     }
-
     set death(death_new: number) {
         this._death = death_new;
     }
-
-    //------------------- End of setters and getters ----------------------
 
     public move(x_vector: number, y_vector: number): void {
         let vectors = this.movement(x_vector, y_vector);

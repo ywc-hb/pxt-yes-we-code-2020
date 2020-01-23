@@ -21,61 +21,48 @@ class Jouabilite {
     get name(): string {
         return this._name;
     }
-
     get x(): number {
         return this._x;
     }
-
     get y(): number {
         return this._y;
     }
-
     get color(): number {
         return this._color;
     }
-
     get pattern(): Walls {
         return this._pattern;
     }
-
     get rad(): number {
         return this._rad;
     }
-
     set x(x_new: number) {
         if(x_new - this.rad <= 0) {
             this._x = 1 + this.rad;
         }
-
         else if(x_new + this.rad > 160) {
             this._x = 160 - this.rad;
         }
-
         else {
             this._x = x_new;
         }
     }
-
     set y(y_new: number) {
         if(y_new - this.rad <= 0) {
             this._y = 1 + this.rad;
         }
-
         else if(y_new + this.rad > 128) {
             this._y = 128 - this.rad;
         }
-
         else {
             this._y = y_new;
         }
     }
-    //------------------- End of setters and getters ----------------------
 
     protected displayCharacter(color: number): void {
         LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
     }
-
     protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number } {
         //Définition des murs à tester en fonction de la position
         let murs: number[][];
@@ -106,7 +93,6 @@ class Jouabilite {
                 else if(this.y + y_vector > murs[i][3]) {
                     closest[1] = murs[i][3];
                 }
-
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {  
                     y_vector = 0;
                 }
