@@ -5,7 +5,7 @@ class Character extends Jouabilite {
     constructor(name: string, x: number, color: number, pattern: Walls) {
         super(name, x, 64, color, 3, pattern);
         this._death = 0;
-        this.reviveCode(false);
+        //this.reviveCode(false);
     }
 
     //------------------- Setters and getters ----------------------
@@ -25,6 +25,8 @@ class Character extends Jouabilite {
         this.y += vectors.y_vector;
         this.displayCharacter(this.color);
     }
+
+    /*
     public reviveCode(action: boolean, list_items?: number[]): number | void {
         //'action vaut 'false' s'il faut donner le code et 'true' s'il faut le tester
         let list_possibilities = [images.arrowImage(ArrowNames.North), images.arrowImage(ArrowNames.South), images.arrowImage(ArrowNames.East), images.arrowImage(ArrowNames.West), 
@@ -58,6 +60,6 @@ class Character extends Jouabilite {
                 }
             }
         }
-    }
+    }*/
 }
 
