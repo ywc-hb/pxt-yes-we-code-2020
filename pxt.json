@@ -14,7 +14,8 @@
         "Jouabilite.ts",
         "Character.ts",
         "Walls.ts",
-        "Ball.ts"
+        "Ball.ts",
+        "Connection.ts"
     ],
     "testFiles": [
         "test.ts"
