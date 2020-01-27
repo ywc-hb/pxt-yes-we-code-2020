@@ -9,7 +9,7 @@ class Master {
         this.introduction();
         this.menu();
         this.pattern = new Walls();
-        let connection = new Connection(69, this);
+        let connection = new Connection(1, this);
         this.rightCharacter = new Character(140, 64512, this.pattern);
         this.leftCharacter = new Character(20, 64512, this.pattern);
     }
@@ -25,19 +25,19 @@ class Master {
         basic.showNumber(actionNumber)
         switch (actionNumber) {
             case 10:
-                this.rightCharacter.move(-1, 0);
+                this.rightCharacter.move(-3, 0);
                 break;
 
             case 11:
-                this.rightCharacter.move(0, 2);
+                this.rightCharacter.move(3, 0);
                 break;
 
             case 12:
-                this.rightCharacter.move(0, -1);
+                this.rightCharacter.move(0, -3);
                 break;
 
             case 13:
-                this.rightCharacter.move(0, 2);
+                this.rightCharacter.move(0, 3);
                 break;
 
             case 20:
