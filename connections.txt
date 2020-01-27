@@ -1,0 +1,14 @@
+Les données sont envoyés sur le canal 69.
+La puissance du signal est idéalement réglée sur 7.
+
+Données envoyés par le t-shirt contrôlant le personnage de droite : 
+
+Touche appuyé --> Int envoyé
+
+Flèche gauche --> 10
+Flèche droite --> 11
+Flèche haut --> 12
+Flèche bas --> 13
+
+Tirer --> 20
+Recharger --> 21
