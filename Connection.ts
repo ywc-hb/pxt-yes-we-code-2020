@@ -3,5 +3,6 @@ class Connection {
     constructor(channel: number) {
         radio.setGroup(channel);
         radio.setTransmitPower(7);
+        
     }
 }
