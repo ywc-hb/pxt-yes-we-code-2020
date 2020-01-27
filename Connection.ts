@@ -12,8 +12,8 @@ class Connection {
 
     private receive(): void {
         control.inBackground(function () {
-            radio.onReceivedNumber(function (receivedNumber: number) {
-                this.master.action(receivedNumber);
+            radio.onReceivedString(function (receivedString: string) {
+                this.master.action(receivedString);
             })
         })
     }

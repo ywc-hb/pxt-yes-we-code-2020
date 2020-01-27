@@ -21,29 +21,29 @@ class Master {
         //Do the menu
     }
 
-    public action(actionNumber: number) {
-        basic.showNumber(actionNumber)
+    public action(actionNumber: string) {
+        basic.showString(actionNumber)
         switch (actionNumber) {
-            case 10:
+            case '10':
                 this.rightCharacter.move(-3, 0);
                 break;
 
-            case 11:
+            case '11':
                 this.rightCharacter.move(3, 0);
                 break;
 
-            case 12:
+            case '12':
                 this.rightCharacter.move(0, -3);
                 break;
 
-            case 13:
+            case '13':
                 this.rightCharacter.move(0, 3);
                 break;
 
-            case 20:
+            case '20':
                 break;
 
-            case 21:
+            case '21':
                 this.rightCharacter.recharge();
                 break;
 
