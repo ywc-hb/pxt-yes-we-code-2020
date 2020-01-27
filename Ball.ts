@@ -4,8 +4,8 @@ class Ball extends Jouabilite {
     protected _speed: number;    //Vitesse (nombre de ms entre 2 mouvements de balle)
     protected _enemy: Character; //Objet correspondant à l'ennemi
 
-    constructor(name: string, x: number, y: number, color: number, speed: number, pattern: Walls, enemy: Character, x_vector?: number, y_vector?: number) {
-        super(name, x, y, color, 2, pattern);
+    constructor(x: number, y: number, color: number, speed: number, pattern: Walls, enemy: Character, x_vector?: number, y_vector?: number) {
+        super(x, y, color, 2, pattern);
         this._enemy = enemy;
         this._speed = speed;
         if(typeof(x_vector) === "number" && typeof(y_vector) === "number") {

@@ -1,13 +1,11 @@
 class Jouabilite {    
-    protected _name: string;
     protected _x: number;
     protected _y: number;
     protected _color: number;
     protected _rad: number;
     protected _pattern: Walls;
 
-    constructor(name: string, x: number, y: number, color: number, rad: number, pattern: Walls) {
-        this._name = name;
+    constructor(x: number, y: number, color: number, rad: number, pattern: Walls) {
         this._x = x;
         this._y = y;
         this._color = color;
@@ -17,10 +15,6 @@ class Jouabilite {
     }
 
     //------------------- Setters and getters ----------------------
-
-    get name(): string {
-        return this._name;
-    }
     get x(): number {
         return this._x;
     }

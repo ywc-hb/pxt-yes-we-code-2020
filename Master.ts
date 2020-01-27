@@ -1,15 +1,17 @@
 class Master {
-    protected action: number;
-    protected _pattern: Walls;
-    protected _enemy: Character;
-    protected _ally: Character;
-    protected _ball_enemy: Ball;
-    protected _ball_ally: Ball;
+    protected pattern: Walls;
+    protected leftCharacter: Character;
+    protected rightCharacter: Character;
+    protected ballRight: Ball;
+    protected ballLeft: Ball;
 
     constructor() {
         this.introduction();
         this.menu();
-        this._pattern = new Walls();
+        this.pattern = new Walls();
+        let connection = new Connection(69, this);
+        this.rightCharacter = new Character(140, 64512, this.pattern);
+        this.leftCharacter = new Character(20, 64512, this.pattern);
     }
 
     private introduction(): void {
@@ -17,5 +19,36 @@ class Master {
     }
     private menu(): void {
         //Do the menu
+    }
+
+    public action(actionNumber: number) {
+        basic.showNumber(actionNumber)
+        switch (actionNumber) {
+            case 10:
+                this.rightCharacter.move(-1, 0);
+                break;
+
+            case 11:
+                this.rightCharacter.move(0, 2);
+                break;
+
+            case 12:
+                this.rightCharacter.move(0, -1);
+                break;
+
+            case 13:
+                this.rightCharacter.move(0, 2);
+                break;
+
+            case 20:
+                break;
+
+            case 21:
+                this.rightCharacter.recharge();
+                break;
+
+            default:
+                break;
+        }
     }
 }
