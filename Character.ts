@@ -1,9 +1,11 @@
 class Character extends Jouabilite {
     protected _death: number;
+    protected remainingBalls: number;
 
     constructor(name: string, x: number, color: number, pattern: Walls) {
         super(name, x, 64, color, 3, pattern);
         this._death = 0;
+        this.remainingBalls = 5;
     }
 
     //------------------- Setters and getters ----------------------
@@ -20,6 +22,10 @@ class Character extends Jouabilite {
         this.x += vectors.x_vector;
         this.y += vectors.y_vector;
         this.displayCharacter(this.color);
+    }
+
+    public recharge(): void {
+        this.remainingBalls = 5;
     }
 }
 
