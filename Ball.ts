@@ -9,10 +9,10 @@ class Ball extends Jouabilite {
     constructor(x: number, y: number, color: number, speed: number, pattern: Walls, enemy: Character, ally: Character, x_vector?: number, y_vector?: number) {
         super(x, y, color, 2, pattern);
         this._enemy = enemy;
-        this._ally;
+        this._ally = ally;
         this._speed = speed;
         this._existance = true;
-        if(typeof(x_vector) === "number" && typeof(y_vector) === "number") {
+        if (typeof (x_vector) === "number" && typeof (y_vector) === "number") {
             this.move(x_vector, y_vector);
         }
     }
@@ -33,6 +33,9 @@ class Ball extends Jouabilite {
     get speed(): number {
         return this._speed;
     }
+    get existance(): boolean {
+        return this._existance;
+    }
     set x_vector(vector: number) {
         this._x_vector = vector;
     }
@@ -51,7 +54,7 @@ class Ball extends Jouabilite {
         let dx_e: number = this.x - this.enemy.x;
         let dy_e: number = this.y - this.enemy.y;
         let d_e: number = Math.sqrt(dx_e * dx_e + dy_e * dy_e);
-        if(d_e < this.rad + this.enemy.rad || d_a < this.rad + this.ally.rad) {
+        if (d_e < this.rad + this.enemy.rad || d_a < this.rad + this.ally.rad) {
             return true;
         }
         else {
@@ -62,13 +65,13 @@ class Ball extends Jouabilite {
         control.inBackground(function () {
             this.x_vector = x_vector;
             this.y_vector = y_vector;
-            while(this.existance) {
+            while (this.existance) {
                 let vectors = this.movement(this.x_vector, this.y_vector);
-                if(vectors.x_vector == 0) {
-                    this.x_vector = -this.x_vector;
+                if (vectors.x_vector == 0) {
+                    this.x_vector = -1 * this.x_vector;
                 }
-                if(vectors.y_vector == 0) {
-                    this.y_vector = -this.y_vector;
+                if (vectors.y_vector == 0) {
+                    this.y_vector = -1 * this.y_vector;
                 }
 
                 this.displayCharacter(65535); //Effacement de l'ancienne position
@@ -77,7 +80,7 @@ class Ball extends Jouabilite {
                 this.displayCharacter(this.color);
                 basic.pause(this.speed);
                 if (this.collision()) {
-                    basic.showNumber(0);
+                    basic.showNumber(0);    //Remplacer cette instruction par l'action à faire
                     this.existance = false;
                 }
             }

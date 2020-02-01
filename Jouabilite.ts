@@ -53,7 +53,7 @@ class Jouabilite {
         }
     }
 
-    protected displayCharacter(color: number): void {
+    public displayCharacter(color: number): void {
         LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
     }
