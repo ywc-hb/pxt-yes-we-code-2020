@@ -1,0 +1,24 @@
+Les données sont envoyés sur le canal 69.
+La puissance du signal est idéalement réglée sur 6 ou 7.
+
+Données envoyés par le t-shirt contrôlant le personnage de droite : 
+
+Touche appuyé --> String
+
+T-shirt controlant le joueur de droite
+Flèche gauche --> 'R_moveWest'
+Flèche droite --> 'R_moveEast'
+Flèche haut --> 'R_moveNorth'
+Flèche bas --> 'R_moveSouth'
+
+Tirer --> 'R_shoot'
+Recharger --> 'R_recharge'
+
+T-shirt controlant le joueur de gauche
+Flèche gauche --> 'L_moveWest'
+Flèche droite --> 'L_moveEast'
+Flèche haut --> 'L_moveNorth'
+Flèche bas --> 'L_moveSouth'
+
+Tirer --> 'L_shoot'
+Recharger --> 'L_recharge'

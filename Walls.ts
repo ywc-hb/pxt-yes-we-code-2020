@@ -6,7 +6,7 @@ class Walls {
     protected _wallsSE: number[][];
 
     constructor() {
-        switch(Math.randomRange(1, 1)) {
+        switch(Math.randomRange(1, 2)) {
             case 1:
                 this._wallsNE = this.patternOne().wallsNE;
                 this._wallsNO = this.patternOne().wallsNO;
@@ -55,7 +55,7 @@ class Walls {
         return this._wallsSE;
     }
 
-    private patternOne(): { wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][] } {
+    private patternOne(): {wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][]} {
         //Fonction dessinant les murs de la map 1
         //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
         let wallsNO = [[1, 1, 80, 1], [1, 1, 1, 64], [1, 50, 16, 50], [31, 34, 56, 34], [36, 59, 46, 59], [70, 64, 80, 64], [18, 12, 48, 12], [18, 0, 18, 12], [48, 0, 48, 12], [80, 1, 80, 25], [80, 45, 80, 64], [36, 59, 36, 64], [46, 59, 46, 64]];
@@ -71,7 +71,7 @@ class Walls {
         };
     }
 
-    private patternTwo(): { wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][] } {
+    private patternTwo(): {wallsNO: number[][], wallsNE: number[][], wallsSE: number[][], wallsSO: number[][]} {
         //Fonction dessinant les murs de la map 2
         //Coordonnées des murs au format [[x_start, y_start, x_end, y_end], ...]
         let wallsNO = [[60, 0, 60, 10], [1, 50, 11, 50], [70, 54, 80, 54], [60, 0, 60, 10], [55, 60, 55, 64], [20, 33, 38, 33], [11, 50, 11, 64], [70, 54, 70, 64], [60, 10, 80, 10], [55, 64, 70, 64], [38, 15, 38, 33], [35, 63, 35, 64], [80, 27, 80, 38]];
