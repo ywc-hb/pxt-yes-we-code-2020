@@ -5,6 +5,7 @@ Données envoyés par le t-shirt contrôlant le personnage de droite :
 
 Touche appuyé --> String
 
+T-shirt controlant le joueur de droite
 Flèche gauche --> 'R_moveLeft'
 Flèche droite --> 'R_moveRight'
 Flèche haut --> 'R_moveUp'
@@ -12,3 +13,12 @@ Flèche bas --> 'R_moveDown'
 
 Tirer --> 'R_shoot'
 Recharger --> 'R_recharge'
+
+T-shirt controlant le joueur de gauche
+Flèche gauche --> 'L_moveLeft'
+Flèche droite --> 'L_moveRight'
+Flèche haut --> 'L_moveUp'
+Flèche bas --> 'L_moveDown'
+
+Tirer --> 'L_shoot'
+Recharger --> 'L_recharge'
