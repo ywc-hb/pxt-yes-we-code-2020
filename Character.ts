@@ -1,19 +1,25 @@
 class Character extends Jouabilite {
     protected _death: number;
-    protected remainingBalls: number;
+    protected _remainingBalls: number;
 
     constructor(x: number, color: number, pattern: Walls) {
         super(x, 64, color, 3, pattern);
         this._death = 0;
-        this.remainingBalls = 5;
+        this._remainingBalls = 5;
     }
 
     //------------------- Setters and getters ----------------------
     get death(): number {
         return this._death;
     }
+    get remainingBalls(): number {
+        return this._remainingBalls;
+    }
     set death(death_new: number) {
         this._death = death_new;
+    }
+    set remainingBalls (balls: number) {
+        this._remainingBalls = balls;
     }
 
     public move(x_vector: number, y_vector: number): void {

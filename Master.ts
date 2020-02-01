@@ -22,63 +22,61 @@ class Master {
     }
 
     public action(action: string) {
-        basic.showString(action)
+        let value_move: number[];
+        switch (action.substr(7)) {
+            case 'W':
+                value_move = [-2, 0];
+                break;
+            case 'E':
+                value_move = [2, 0];
+                break;
+            case 'N':
+                value_move = [0, -2];
+                break;
+            case 'S':
+                value_move = [0, 2];
+                break;
+            case 'NE':
+                value_move = [2, -2];
+                break;
+            case 'NW':
+                value_move = [-2, -2];
+                break;
+            case 'SE':
+                value_move = [2, 2];
+                break;
+            case 'SW':
+                value_move = [-2, 2];
+                break;
+            default:
+                value_move = [0, 0];
+                break;  
+        }
 
         if (action[0] == 'R') {
-            switch (action) {
-                case 'R_moveLeft':
-                    this.rightCharacter.move(-3, 0);
+            switch (action.substr(2, 6)) {
+                case 'move_':
+                    this.rightCharacter.move(value_move[0], value_move[1]);
                     break;
-
-                case 'R_moveRight':
-                    this.rightCharacter.move(3, 0);
+                case 'shoot':
                     break;
-
-                case 'R_moveUp':
-                    this.rightCharacter.move(0, -3);
-                    break;
-
-                case 'R_moveDown':
-                    this.rightCharacter.move(0, 3);
-                    break;
-
-                case 'R_shoot':
-                    break;
-
-                case 'R_recharge':
+                case 'charg':
                     this.rightCharacter.recharge();
                     break;
-
                 default:
                     break;
             }
         }
-
         else if (action[0] == 'L') {
-            switch (action) {
-                case 'L_moveLeft':
-                    this.leftCharacter.move(-3, 0);
+            switch (action.substr(2, 6)) {
+                case 'move_':
+                    this.rightCharacter.move(value_move[0], value_move[1]);
                     break;
-
-                case 'L_moveRight':
-                    this.leftCharacter.move(3, 0);
+                case 'shoot':
                     break;
-
-                case 'L_moveUp':
-                    this.leftCharacter.move(0, -3);
+                case 'charg':
+                    this.rightCharacter.recharge();
                     break;
-
-                case 'L_moveDown':
-                    this.leftCharacter.move(0, 3);
-                    break;
-
-                case 'L_shoot':
-                    break;
-
-                case 'L_recharge':
-                    this.leftCharacter.recharge();
-                    break;
-
                 default:
                     break;
             }
