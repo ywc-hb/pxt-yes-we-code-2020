@@ -21,34 +21,67 @@ class Master {
         //Do the menu
     }
 
-    public action(actionNumber: string) {
-        basic.showString(actionNumber)
-        switch (actionNumber) {
-            case '10':
-                this.rightCharacter.move(-3, 0);
-                break;
+    public action(action: string) {
+        basic.showString(action)
 
-            case '11':
-                this.rightCharacter.move(3, 0);
-                break;
+        if (action[0] == 'R') {
+            switch (action) {
+                case 'R_moveLeft':
+                    this.rightCharacter.move(-3, 0);
+                    break;
 
-            case '12':
-                this.rightCharacter.move(0, -3);
-                break;
+                case 'R_moveRight':
+                    this.rightCharacter.move(3, 0);
+                    break;
 
-            case '13':
-                this.rightCharacter.move(0, 3);
-                break;
+                case 'R_moveUp':
+                    this.rightCharacter.move(0, -3);
+                    break;
 
-            case '20':
-                break;
+                case 'R_moveDown':
+                    this.rightCharacter.move(0, 3);
+                    break;
 
-            case '21':
-                this.rightCharacter.recharge();
-                break;
+                case 'R_shoot':
+                    break;
 
-            default:
-                break;
+                case 'R_recharge':
+                    this.rightCharacter.recharge();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        else if (action[0] == 'L') {
+            switch (action) {
+                case 'L_moveLeft':
+                    this.leftCharacter.move(-3, 0);
+                    break;
+
+                case 'L_moveRight':
+                    this.leftCharacter.move(3, 0);
+                    break;
+
+                case 'L_moveUp':
+                    this.leftCharacter.move(0, -3);
+                    break;
+
+                case 'L_moveDown':
+                    this.leftCharacter.move(0, 3);
+                    break;
+
+                case 'L_shoot':
+                    break;
+
+                case 'L_recharge':
+                    this.leftCharacter.recharge();
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }
