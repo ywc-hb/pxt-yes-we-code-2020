@@ -65,6 +65,7 @@ class Ball extends Jouabilite {
         control.inBackground(function () {
             this.x_vector = x_vector;
             this.y_vector = y_vector;
+            let rebond = 0;
             while (this.existance) {
                 let vectors = this.movement(this.x_vector, this.y_vector);
                 if (vectors.x_vector == 0) {
@@ -72,6 +73,9 @@ class Ball extends Jouabilite {
                 }
                 if (vectors.y_vector == 0) {
                     this.y_vector = -1 * this.y_vector;
+                }
+                if (vectors.rebonds) {
+                    rebond ++;
                 }
 
                 this.displayCharacter(65535); //Effacement de l'ancienne position
@@ -81,6 +85,9 @@ class Ball extends Jouabilite {
                 basic.pause(this.speed);
                 if (this.collision()) {
                     basic.showNumber(0);    //Remplacer cette instruction par l'action à faire
+                    this.existance = false;
+                }
+                if (rebond > 5) {
                     this.existance = false;
                 }
             }
