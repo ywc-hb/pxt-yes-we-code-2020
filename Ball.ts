@@ -84,6 +84,7 @@ class Ball extends Jouabilite {
                     this.existance = false;
                 }
             }
+            ball.displayCharacter(65535)
         })
     }
 }

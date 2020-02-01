@@ -12,4 +12,3 @@ basic.pause(500)
 game.resume()
 basic.pause(500)
 ball.existance = false
-ball.displayCharacter(65535)
