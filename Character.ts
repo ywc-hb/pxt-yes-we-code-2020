@@ -34,4 +34,3 @@ class Character extends Jouabilite {
         this.remainingBalls = 5;
     }
 }
-
