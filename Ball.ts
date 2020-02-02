@@ -73,10 +73,10 @@ class Ball extends Jouabilite {
                 }
                 if (vectors.y_vector == 0) {
                     this.y_vector = -1 * this.y_vector;
-                }
-                if (vectors.rebonds) {
+                }/*
+                if (vectors.rebond) {
                     rebond ++;
-                }
+                }*/
 
                 this.displayCharacter(65535); //Effacement de l'ancienne position
                 this.x += vectors.x_vector;
@@ -91,7 +91,7 @@ class Ball extends Jouabilite {
                     this.existance = false;
                 }
             }
-            ball.displayCharacter(65535)
+            this.displayCharacter(65535)
         })
     }
 }

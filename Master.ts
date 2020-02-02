@@ -1,74 +1,72 @@
 class Master {
-    protected pattern: Walls;
-    protected leftCharacter: Character;
-    protected rightCharacter: Character;
-    protected ballRight: Ball;
-    protected ballLeft: Ball;
+    static pattern: Walls;
+    static leftCharacter: Character;
+    static rightCharacter: Character;
+    static ballRight: Ball;
+    static ballLeft: Ball;
 
-    constructor() {
-        this.introduction();
-        this.menu();
-        this.pattern = new Walls();
-        let connection = new Connection(1, this);
-        this.rightCharacter = new Character(140, 64512, this.pattern);
-        this.leftCharacter = new Character(20, 64512, this.pattern);
-        //this.ballRight = new Ball(10, 10, 0, 10, this.pattern, this.rightCharacter, this.leftCharacter, 1, 1);
-        //basic.pause(100);
-        //this.ballRight = new Ball(10, 10, 0, 10, this.pattern, this.rightCharacter, this.leftCharacter, 1, 1);
-
+    static init() {
+        Master.introduction();
+        Master.menu();
+        Master.pattern = new Walls();
+        let connection = new Connection(1);
+        Master.rightCharacter = new Character(140, 64512, this.pattern);
+        Master.leftCharacter = new Character(20, 64512, this.pattern);
     }
 
-    private introduction(): void {
+    static introduction(): void {
         //Do the introduction
     }
-    private menu(): void {
+    static menu(): void {
         //Do the menu
     }
 
-    public action(action: string) {
+    static actions(action: string) {
+        basic.showString(action)
+        //Definition de la direction d'un possible mouvement
         let value_move: number[];
         let x_new_ball: number;
         let y_new_ball: number;
         switch (action.substr(7)) {
             case 'W':
                 value_move = [-2, 0];
-                y_new_ball = this.rightCharacter.y;
-                x_new_ball = this.rightCharacter.x - this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y;
+                x_new_ball = Master.rightCharacter.x - Master.rightCharacter.rad;
                 break;
             case 'E':
                 value_move = [2, 0];
-                y_new_ball = this.rightCharacter.y;
-                x_new_ball = this.rightCharacter.x + this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y;
+                x_new_ball = Master.rightCharacter.x + Master.rightCharacter.rad;
                 break;
             case 'N':
                 value_move = [0, -2];
-                y_new_ball = this.rightCharacter.y - this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x;
+                y_new_ball = Master.rightCharacter.y - Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x;
                 break;
             case 'S':
                 value_move = [0, 2];
-                y_new_ball = this.rightCharacter.y + this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x;
+                y_new_ball = Master.rightCharacter.y + Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x;
                 break;
             case 'NE':
                 value_move = [2, -2];
-                y_new_ball = this.rightCharacter.y - this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x + this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y - Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x + Master.rightCharacter.rad;
                 break;
             case 'NW':
                 value_move = [-2, -2];
-                y_new_ball = this.rightCharacter.y - this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x - this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y - Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x - Master.rightCharacter.rad;
                 break;
             case 'SE':
                 value_move = [2, 2];
-                y_new_ball = this.rightCharacter.y + this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x + this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y + Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x + Master.rightCharacter.rad;
                 break;
             case 'SW':
                 value_move = [-2, 2];
-                y_new_ball = this.rightCharacter.y + this.rightCharacter.rad;
-                x_new_ball = this.rightCharacter.x - this.rightCharacter.rad;
+                y_new_ball = Master.rightCharacter.y + Master.rightCharacter.rad;
+                x_new_ball = Master.rightCharacter.x - Master.rightCharacter.rad;
                 break;
             default:
                 value_move = [0, 0];
@@ -78,13 +76,18 @@ class Master {
         if (action[0] == 'R') {
             switch (action.substr(2, 6)) {
                 case 'move_':
-                    this.rightCharacter.move(value_move[0], value_move[1]);
+                    Master.rightCharacter.move(value_move[0], value_move[1]);
                     break;
                 case 'shoot':
-                    this.ballRight = new Ball(x_new_ball, y_new_ball, 0, 10, this.pattern, this.rightCharacter, this.leftCharacter, value_move[0], value_move[1]);
+                    basic.showString(action);
+                    basic.showNumber(value_move[0]);
+                    if (Master.rightCharacter.remainingBalls != 0) {
+                        Master.ballRight.existance = false;
+                        Master.ballRight = new Ball(x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                    }
                     break;
                 case 'charg':
-                    this.rightCharacter.recharge();
+                    Master.rightCharacter.recharge();
                     break;
                 default:
                     break;
@@ -93,13 +96,13 @@ class Master {
         else if (action[0] == 'L') {
             switch (action.substr(2, 6)) {
                 case 'move_':
-                    this.rightCharacter.move(value_move[0], value_move[1]);
+                    Master.leftCharacter.move(value_move[0], value_move[1]);
                     break;
                 case 'shoot': 
-                    this.ballRight = new Ball(x_new_ball, y_new_ball, 0, 10, this.pattern, this.rightCharacter, this.leftCharacter, value_move[0], value_move[1]);
+                    Master.ballLeft = new Ball(x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
                     break;
                 case 'charg':
-                    this.rightCharacter.recharge();
+                    Master.leftCharacter.recharge();
                     break;
                 default:
                     break;
