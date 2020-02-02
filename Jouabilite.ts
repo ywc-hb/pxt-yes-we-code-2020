@@ -57,21 +57,21 @@ class Jouabilite {
         LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
     }
-    protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number, /*rebonds: boolean*/ } {
-        //let rebondir = false;
+    protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number, rebonds: boolean } {
+        let rebondir = false;
         //Définition des murs à tester en fonction de la position
         let murs: number[][];
         if (this.x <= 80 && this.y <= 64) {
-            murs = this._pattern.wallsNO;
+            murs = this._pattern.wallNW;
         }
         else if (this.x <= 80 && this.y >= 64) {
-            murs = this._pattern.wallsSO;
+            murs = this._pattern.wallSW;
         }
         else if (this.x >= 80 && this.y <= 64) {
-            murs = this._pattern.wallsNE;
+            murs = this._pattern.wallNE;
         }
         else {
-            murs = this._pattern.wallsSE;
+            murs = this._pattern.wallSE;
         }
         
         for (let i = 0; i < murs.length; i++) {
@@ -90,11 +90,11 @@ class Jouabilite {
                 }
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {  
                     y_vector = 0;
-                    //rebondir = true;
+                    rebondir = true;
                 }
                 else if (Math.sqrt(Math.pow((this.x + x_vector) - closest[0], 2) + Math.pow((this.y) - closest[1], 2)) < this.rad + 1) {
                     x_vector = 0;
-                    //rebondir = true;
+                    rebondir = true;
                 }
             }
 
@@ -114,18 +114,19 @@ class Jouabilite {
                 
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
                     y_vector = 0;
-                    //rebondir = true;
+                    rebondir = true;
                 }
                 else if (Math.sqrt(Math.pow((this.x + x_vector) - closest[0], 2) + Math.pow((this.y) - closest[1], 2)) < this.rad + 1) {
                     x_vector = 0;
-                    //rebondir = true;
+                    rebondir = true;
                 }
             }
         }
 
         return {
             x_vector: x_vector,
-            y_vector: y_vector
+            y_vector: y_vector,
+            rebonds: rebondir
         };
     }
 } 

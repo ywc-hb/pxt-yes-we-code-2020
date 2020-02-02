@@ -46,15 +46,11 @@ class Ball extends Jouabilite {
         this._existance = a;
     }
 
-    private collision(): boolean {
-        let dx_a: number = this.x - this.enemy.x;
-        let dy_a: number = this.y - this.enemy.y;
-        let d_a: number = Math.sqrt(dx_a * dx_a + dy_a * dy_a);
-
-        let dx_e: number = this.x - this.enemy.x;
-        let dy_e: number = this.y - this.enemy.y;
-        let d_e: number = Math.sqrt(dx_e * dx_e + dy_e * dy_e);
-        if (d_e < this.rad + this.enemy.rad || d_a < this.rad + this.ally.rad) {
+    private collision(charact: Character): boolean {
+        let dx: number = this.x - charact.x;
+        let dy: number = this.y - charact.y;
+        let d: number = Math.sqrt(dx * dx + dy * dy);
+        if (d < this.rad + charact.rad) {
             return true;
         }
         else {
@@ -73,17 +69,17 @@ class Ball extends Jouabilite {
                 }
                 if (vectors.y_vector == 0) {
                     this.y_vector = -1 * this.y_vector;
-                }/*
+                }
                 if (vectors.rebond) {
                     rebond ++;
-                }*/
+                }
 
                 this.displayCharacter(65535); //Effacement de l'ancienne position
                 this.x += vectors.x_vector;
                 this.y += vectors.y_vector;
                 this.displayCharacter(this.color);
                 basic.pause(this.speed);
-                if (this.collision()) {
+                if (this.collision(this.enemy) || this.collision(this.ally)) {
                     basic.showNumber(0);    //Remplacer cette instruction par l'action à faire
                     this.existance = false;
                 }

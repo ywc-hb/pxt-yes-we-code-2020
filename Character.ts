@@ -15,11 +15,11 @@ class Character extends Jouabilite {
     get remainingBalls(): number {
         return this._remainingBalls;
     }
-    set death(death_new: number) {
-        this._death = death_new;
+    set death(a: number) {
+        this._death = a;
     }
-    set remainingBalls (balls: number) {
-        this._remainingBalls = balls;
+    set remainingBalls (a: number) {
+        this._remainingBalls = a;
     }
 
     public move(x_vector: number, y_vector: number): void {
