@@ -1,4 +1,4 @@
-class Jouabilite {    
+class Jouabilite {
     protected _x: number;
     protected _y: number;
     protected _color: number;
@@ -31,10 +31,10 @@ class Jouabilite {
         return this._rad;
     }
     set x(x_new: number) {
-        if(x_new - this.rad <= 0) {
+        if (x_new - this.rad <= 0) {
             this._x = 1 + this.rad;
         }
-        else if(x_new + this.rad > 160) {
+        else if (x_new + this.rad > 160) {
             this._x = 160 - this.rad;
         }
         else {
@@ -42,10 +42,10 @@ class Jouabilite {
         }
     }
     set y(y_new: number) {
-        if(y_new - this.rad <= 0) {
+        if (y_new - this.rad <= 0) {
             this._y = 1 + this.rad;
         }
-        else if(y_new + this.rad > 128) {
+        else if (y_new + this.rad > 128) {
             this._y = 128 - this.rad;
         }
         else {
@@ -59,36 +59,54 @@ class Jouabilite {
     }
     protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number, rebonds: boolean } {
         let rebondir = false;
+
         //Définition des murs à tester en fonction de la position
-        let murs: number[][];
+        let murs = this._pattern.wallNW;
+        let x_diff: number;
+        let y_diff: number;
         if (this.x <= 80 && this.y <= 64) {
-            murs = this._pattern.wallNW;
+            x_diff = 0;
+            y_diff = 0;
         }
-        else if (this.x <= 80 && this.y >= 64) {
-            murs = this._pattern.wallSW;
+        else if (this.x <= 80 && this.y > 64) {
+            x_diff = 0;
+            y_diff = 128;
         }
-        else if (this.x >= 80 && this.y <= 64) {
-            murs = this._pattern.wallNE;
+        else if (this.x > 80 && this.y <= 64) {
+            x_diff = 160;
+            y_diff = 0;
         }
         else {
-            murs = this._pattern.wallSE;
+            x_diff = 160;
+            y_diff = 128;
         }
-        
+
+        for (let i = 0; i < murs.length; i++) {
+            let x1 = murs[i][0];
+            let y1 = murs[i][1];
+            let x2 = murs[i][2];
+            let y2 = murs[i][3];
+
+            murs[i][0] = Math.abs(x1 - x_diff);
+            murs[i][2] = Math.abs(x2 - x_diff);
+            murs[i][1] = Math.abs(y1 - y_diff);
+            murs[i][3] = Math.abs(y2 - y_diff);
+        }
         for (let i = 0; i < murs.length; i++) {
             //Test des positions influants sur le vecteur y
-            if(murs[i][0] === murs[i][2]) {
+            if (murs[i][0] === murs[i][2]) {
                 //Définition du point le plus proche du cercle
                 let closest = [murs[i][0], 300];
-                if(this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
+                if (this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
                     closest[1] = this.y;
                 }
-                else if(this.y + y_vector < murs[i][1]) {
+                else if (this.y + y_vector < murs[i][1]) {
                     closest[1] = murs[i][1];
                 }
-                else if(this.y + y_vector > murs[i][3]) {
+                else if (this.y + y_vector > murs[i][3]) {
                     closest[1] = murs[i][3];
                 }
-                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {  
+                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
                     y_vector = 0;
                     rebondir = true;
                 }
@@ -111,7 +129,7 @@ class Jouabilite {
                 else if (this.x + x_vector > murs[i][2]) {
                     closest[0] = murs[i][2];
                 }
-                
+
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
                     y_vector = 0;
                     rebondir = true;
