@@ -62,26 +62,41 @@ class Jouabilite {
 
         //Définition des murs à tester en fonction de la position
         let murs = this._pattern.wallNW;
-        let x_diff: number;
-        let y_diff: number;
-        if (this.x <= 80 && this.y <= 64) {
-            x_diff = 0;
-            y_diff = 0;
+//        let x_diff: number;
+//        let y_diff: number;
+        if (this.x > 80 && this.y <= 64) {
+            let a: number;
+            for (let i = 0; i < murs.length; i++) {
+                basic.showNumber(murs[i][0])
+                basic.showNumber(murs[i][1])
+                basic.showNumber(murs[i][2])
+                basic.showNumber(murs[i][3])
+
+                a = murs[i][0];
+                murs[i][0] = 160 - murs[i][2];
+                murs[i][2] = 160 - a + 1;
+                
+                basic.showNumber(murs[i][0])
+                basic.showNumber(murs[i][1])
+                basic.showNumber(murs[i][2])
+                basic.showNumber(murs[i][3])            }
         }
         else if (this.x <= 80 && this.y > 64) {
-            x_diff = 0;
-            y_diff = 128;
+            for (let i = 0; i < murs.length; i++) {
+                murs[i][1] = 128 - murs[i][1];
+                murs[i][3] = 128 - murs[i][3];
+            }
         }
-        else if (this.x > 80 && this.y <= 64) {
-            x_diff = 160;
-            y_diff = 0;
-        }
-        else {
-            x_diff = 160;
-            y_diff = 128;
+        else if (this.x > 80 && this.y > 64) {
+            for (let i = 0; i < murs.length; i++) {
+                murs[i][1] = 128 - murs[i][1];
+                murs[i][3] = 128 - murs[i][3];
+                murs[i][0] = 160 - murs[i][0];
+                murs[i][2] = 160 - murs[i][2];
+            }
         }
 
-        for (let i = 0; i < murs.length; i++) {
+/*      for (let i = 0; i < murs.length; i++) {
             let x1 = murs[i][0];
             let y1 = murs[i][1];
             let x2 = murs[i][2];
@@ -91,7 +106,7 @@ class Jouabilite {
             murs[i][2] = Math.abs(x2 - x_diff);
             murs[i][1] = Math.abs(y1 - y_diff);
             murs[i][3] = Math.abs(y2 - y_diff);
-        }
+        }*/
         for (let i = 0; i < murs.length; i++) {
             //Test des positions influants sur le vecteur y
             if (murs[i][0] === murs[i][2]) {
