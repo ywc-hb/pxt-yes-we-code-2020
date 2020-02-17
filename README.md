@@ -28,6 +28,7 @@ Pour développer ce projet, nous utilisons de la POO en TypeScript avec l'utilis
 - [ ] Voir le comportement avec le t-shirt
 - [ ] Communication entre les deux microbits
 
+Pour trouver le fonctionnement du t-shirt et son code source, rendez-vous [ici](https://github.com/ywc-hb/pxt-yes-we-code-t-shirt/)
 
 ### Idées d'améliorations ###
 
@@ -42,17 +43,3 @@ Pour développer ce projet, nous utilisons de la POO en TypeScript avec l'utilis
 [L'écran](https://www.kubii.fr/microbit/2198-module-d-affichage-colore-18-pour-micro-bit-160x128-kubii-3272496011120.html)
 
 [Rédiger en MarkDown](https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown) _(pour le readme.md)_
-
-
-
-
-
-
-
-# Espace réservé aux programmeurs #
-
-
-
-
-
-
