@@ -1,6 +1,6 @@
 {
     "name": "pxt-yes-we-code-2020",
-    "version": "0.3.9",
+    "version": "0.4.0",
     "description": "",
     "dependencies": {
         "core": "*",
