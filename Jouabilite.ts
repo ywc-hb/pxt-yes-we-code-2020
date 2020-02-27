@@ -65,21 +65,10 @@ class Jouabilite {
 //        let x_diff: number;
 //        let y_diff: number;
         if (this.x > 80 && this.y <= 64) {
-            let a: number;
             for (let i = 0; i < murs.length; i++) {
-                basic.showNumber(murs[i][0])
-                basic.showNumber(murs[i][1])
-                basic.showNumber(murs[i][2])
-                basic.showNumber(murs[i][3])
-
-                a = murs[i][0];
-                murs[i][0] = 160 - murs[i][2];
-                murs[i][2] = 160 - a + 1;
-                
-                basic.showNumber(murs[i][0])
-                basic.showNumber(murs[i][1])
-                basic.showNumber(murs[i][2])
-                basic.showNumber(murs[i][3])            }
+                murs[i][0] = 160 - murs[i][0];
+                murs[i][2] = 160 - murs[i][2];
+            }
         }
         else if (this.x <= 80 && this.y > 64) {
             for (let i = 0; i < murs.length; i++) {
@@ -111,7 +100,7 @@ class Jouabilite {
             //Test des positions influants sur le vecteur y
             if (murs[i][0] === murs[i][2]) {
                 //Définition du point le plus proche du cercle
-                let closest = [murs[i][0], 300];
+                let closest = [murs[i][0], 800];
                 if (this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
                     closest[1] = this.y;
                 }
@@ -121,6 +110,7 @@ class Jouabilite {
                 else if (this.y + y_vector > murs[i][3]) {
                     closest[1] = murs[i][3];
                 }
+                
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
                     y_vector = 0;
                     rebondir = true;
