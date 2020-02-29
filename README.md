@@ -43,3 +43,11 @@ Pour trouver le fonctionnement du t-shirt et son code source, rendez-vous [ici](
 [L'écran](https://www.kubii.fr/microbit/2198-module-d-affichage-colore-18-pour-micro-bit-160x128-kubii-3272496011120.html)
 
 [Rédiger en MarkDown](https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown) _(pour le readme.md)_
+
+
+### Zone des programmeurs ###
+
+Voir pour coordinner le début des 2 microbits
+
+
+
