@@ -7,19 +7,14 @@ class Master {
 
     static init() {
         Master.introduction();
-        Master.menu();
         Master.pattern = new Walls();
-        let connection = new Connection(1);
+        let connection = new Connection(69);
         Master.rightCharacter = new Character(140, 64512, this.pattern);
         Master.leftCharacter = new Character(20, 64512, this.pattern);
-        Master.ballLeft = new Ball(10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
     }
 
     static introduction(): void {
         //Do the introduction
-    }
-    static menu(): void {
-        //Do the menu
     }
 
     static actions(action: string) {
