@@ -1,6 +1,8 @@
 LCD1IN8.LCD_Init();
 LCD1IN8.LCD_Clear();
 
+// Le t-shirt envoie "fleche_N" ou "fleche_S" et "choix" lors du choix (lol mdr xptdr c lojic wsh)
+// Le t-shirt passe en mode "jeu" quand il recoit "start_game"
 
 LCD1IN8.DisString(49, 30, "Commencer", 0);
 LCD1IN8.DisString(56, 60, "Records", 0);
