@@ -13,8 +13,7 @@ class Master {
         Master.ballLeft = new Ball(10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
     }
 
-    static actions(action: string) {
-        basic.showString(action)
+    private static move(action: string) {
         //Definition de la direction d'un possible mouvement
         let value_move: number[];
         let x_new_ball: number;
@@ -99,6 +98,27 @@ class Master {
                 default:
                     break;
             }
+        }
+    }
+
+    private static endGame(action: string) {
+
+    }
+
+    private static relive(action: string) {
+
+    }
+
+    static actions(action: string) {
+        switch (action.substr(2, 6)) {
+            case "kaput":
+                Master.endGame(action); //Et je parle pas du dernier Avengers
+                break;
+            case "reliv":
+                Master.relive(action);
+                break;
+            default:
+                Master.move(action);
         }
     }
 }
