@@ -57,61 +57,65 @@ class Jouabilite {
         LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
     }
+
     protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number, rebonds: boolean } {
         let rebondir = false;
-
         //Définition des murs à tester en fonction de la position
-        let murs = this._pattern.wallNW;
-//        let x_diff: number;
-//        let y_diff: number;
-        if (this.x > 80 && this.y <= 64) {
-            for (let i = 0; i < murs.length; i++) {
-                murs[i][0] = 160 - murs[i][0];
-                murs[i][2] = 160 - murs[i][2];
+        let murs: number[][] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+        //this.x = 60;
+        //this.y = 70;
+        if (this.x <= 80 && this.y <= 64) {
+            basic.showNumber(0)
+            murs = this._pattern.wallNW;
+        }
+        if (this.x <= 80 && this.y >= 64) {
+            basic.showNumber(1)
+            for (let i = 0; i < this._pattern.wallNW.length; i++) {
+                murs[i][1] = 127.5 - this._pattern.wallNW[i][1];
+                murs[i][3] = 127.5 - this._pattern.wallNW[i][3];
             }
         }
-        else if (this.x <= 80 && this.y > 64) {
-            for (let i = 0; i < murs.length; i++) {
-                murs[i][1] = 128 - murs[i][1];
-                murs[i][3] = 128 - murs[i][3];
+        if (this.x >= 80 && this.y <= 64) {
+            basic.showNumber(2)
+            for (let i = 0; i < this._pattern.wallNW.length; i++) {
+                murs[i][0] = 159 - this._pattern.wallNW[i][0];
+                murs[i][2] = 159 - this._pattern.wallNW[i][2];
             }
         }
-        else if (this.x > 80 && this.y > 64) {
-            for (let i = 0; i < murs.length; i++) {
-                murs[i][1] = 128 - murs[i][1];
-                murs[i][3] = 128 - murs[i][3];
-                murs[i][0] = 160 - murs[i][0];
-                murs[i][2] = 160 - murs[i][2];
-            }
+    
+        LCD1IN8.LCD_Clear();
+        let j = 0;
+        while (j < murs.length) {
+            LCD1IN8.DrawLine(murs[j][0], murs[j][1], murs[j][2], murs[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
+            j++
         }
-
-/*      for (let i = 0; i < murs.length; i++) {
-            let x1 = murs[i][0];
-            let y1 = murs[i][1];
-            let x2 = murs[i][2];
-            let y2 = murs[i][3];
-
-            murs[i][0] = Math.abs(x1 - x_diff);
-            murs[i][2] = Math.abs(x2 - x_diff);
-            murs[i][1] = Math.abs(y1 - y_diff);
-            murs[i][3] = Math.abs(y2 - y_diff);
+        LCD1IN8.LCD_Display()
+        basic.clearScreen()
+        basic.pause(100)
+        
+        /*
+        else if (this.x >= 80 && this.y <= 64) {
+            //murs = this._pattern.wallNE;
+        }
+        else {
+            //murs = this._pattern.wallSE;
         }*/
+        
         for (let i = 0; i < murs.length; i++) {
             //Test des positions influants sur le vecteur y
-            if (murs[i][0] === murs[i][2]) {
+            if(murs[i][0] === murs[i][2]) {
                 //Définition du point le plus proche du cercle
-                let closest = [murs[i][0], 800];
-                if (this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
+                let closest = [murs[i][0], 300];
+                if(this.y + y_vector >= murs[i][1] && this.y + y_vector <= murs[i][3]) {
                     closest[1] = this.y;
                 }
-                else if (this.y + y_vector < murs[i][1]) {
+                else if(this.y + y_vector < murs[i][1]) {
                     closest[1] = murs[i][1];
                 }
-                else if (this.y + y_vector > murs[i][3]) {
+                else if(this.y + y_vector > murs[i][3]) {
                     closest[1] = murs[i][3];
                 }
-                
-                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
+                if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {  
                     y_vector = 0;
                     rebondir = true;
                 }
@@ -134,7 +138,7 @@ class Jouabilite {
                 else if (this.x + x_vector > murs[i][2]) {
                     closest[0] = murs[i][2];
                 }
-
+                
                 if (Math.sqrt(Math.pow((this.x) - closest[0], 2) + Math.pow((this.y + y_vector) - closest[1], 2)) < this.rad + 1) {
                     y_vector = 0;
                     rebondir = true;
