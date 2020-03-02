@@ -49,5 +49,5 @@ Pour trouver le fonctionnement du t-shirt et son code source, rendez-vous [ici](
 
 Voir pour coordinner le début des 2 microbits
 
-
+Voir pour qund donner le code pour revivre pour la premiere fois
 
