@@ -136,8 +136,10 @@ class Master {
     static killedCharacter(who: Character) {
         switch (who.name) {
             case "right":
+                radio.sendString("R_dead");
                 break;
             case "left":
+                radio.sendString("L_dead");
                 break;
             default:
                 basic.showString("Error in 'killedCharacter()'");
