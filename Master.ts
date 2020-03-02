@@ -8,9 +8,9 @@ class Master {
     static init() {
         let connection = new Connection(1);
         Master.pattern = new Walls();
-        Master.rightCharacter = new Character(140, 64512, this.pattern);
-        Master.leftCharacter = new Character(20, 64512, this.pattern);
-        Master.ballLeft = new Ball(10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
+        Master.rightCharacter = new Character("left", 140, 64512, this.pattern);
+        Master.leftCharacter = new Character("right", 20, 64512, this.pattern);
+        //Master.ballLeft = new Ball("left", 10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
     }
 
     private static move(action: string) {
@@ -74,7 +74,7 @@ class Master {
                     basic.showNumber(value_move[0]);
                     if (Master.rightCharacter.remainingBalls != 0) {
                         Master.ballRight.existance = false;
-                        Master.ballRight = new Ball(x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                        Master.ballRight = new Ball("right", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
                     }
                     break;
                 case 'charg':
@@ -90,7 +90,7 @@ class Master {
                     Master.leftCharacter.move(value_move[0], value_move[1]);
                     break;
                 case 'shoot': 
-                    Master.ballLeft = new Ball(x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                    Master.ballLeft = new Ball("left", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
                     break;
                 case 'charg':
                     Master.leftCharacter.recharge();
@@ -102,11 +102,21 @@ class Master {
     }
 
     private static endGame(action: string) {
-
+        //Do something to finish the game
     }
 
     private static relive(action: string) {
-
+        switch (action[0]) {
+            case 'R':
+                Master.rightCharacter.death ++;
+                break;
+            case 'L':
+                Master.leftCharacter.death ++;
+                break;
+            default:
+                basic.showString("Error in 'relive()'");
+                break;
+        }
     }
 
     static actions(action: string) {
@@ -119,6 +129,19 @@ class Master {
                 break;
             default:
                 Master.move(action);
+        }
+    }
+
+
+    static killedCharacter(who: Character) {
+        switch (who.name) {
+            case "right":
+                break;
+            case "left":
+                break;
+            default:
+                basic.showString("Error in 'killedCharacter()'");
+                break;
         }
     }
 }

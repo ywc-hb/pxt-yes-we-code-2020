@@ -2,8 +2,8 @@ class Character extends Jouabilite {
     protected _death: number;
     protected _remainingBalls: number;
 
-    constructor(x: number, color: number, pattern: Walls) {
-        super(x, 64, color, 3, pattern);
+    constructor(name: string, x: number, color: number, pattern: Walls) {
+        super(name, x, 64, color, 3, pattern);
         this._death = 0;
         this._remainingBalls = 5;
     }

@@ -6,8 +6,8 @@ class Ball extends Jouabilite {
     protected _ally: Character;
     protected _existance: boolean;//Droit ou non d'exister
 
-    constructor(x: number, y: number, color: number, speed: number, pattern: Walls, enemy: Character, ally: Character, x_vector?: number, y_vector?: number) {
-        super(x, y, color, 2, pattern);
+    constructor(name: string, x: number, y: number, color: number, speed: number, pattern: Walls, enemy: Character, ally: Character, x_vector?: number, y_vector?: number) {
+        super(name, x, y, color, 2, pattern);
         this._enemy = enemy;
         this._ally = ally;
         this._speed = speed;
@@ -77,12 +77,21 @@ class Ball extends Jouabilite {
                 this.displayCharacter(65535); //Effacement de l'ancienne position
                 this.x += vectors.x_vector;
                 this.y += vectors.y_vector;
-                this.displayCharacter(this.color);
+                this.displayCharacter(this.color); //Affichage de la nouvelle position
+                
                 basic.pause(this.speed);
-                if (this.collision(this.enemy) || this.collision(this.ally)) {
-                    basic.showNumber(0);    //Remplacer cette instruction par l'action à faire
+
+                // Test des collision avec des personnages
+                if (this.collision(this.enemy)) {
                     this.existance = false;
+                    Master.killedCharacter(this.enemy());
                 }
+                if (this.collision(this.ally)) {
+                    this.existance = false;
+                    Master.killedCharacter(this.ally());
+                }
+
+                // Test du nombre max de rebonds
                 if (nb_rebond > 5) {
                     this.existance = false;
                 }
