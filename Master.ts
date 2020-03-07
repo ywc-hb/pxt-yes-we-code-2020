@@ -10,7 +10,6 @@ class Master {
         Master.pattern = new Walls();
         Master.rightCharacter = new Character("left", 140, 64512, this.pattern);
         Master.leftCharacter = new Character("right", 20, 64512, this.pattern);
-        //Master.ballLeft = new Ball("left", 10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
     }
 
     private static move(action: string) {
@@ -64,40 +63,32 @@ class Master {
                 break;  
         }
 
-        if (action[0] == 'R') {
-            switch (action.substr(2, 6)) {
-                case 'move_':
-                    Master.rightCharacter.move(value_move[0], value_move[1]);
-                    break;
-                case 'shoot':
-                    basic.showString(action);
-                    basic.showNumber(value_move[0]);
-                    if (Master.rightCharacter.remainingBalls != 0) {
-                        Master.ballRight.existance = false;
-                        Master.ballRight = new Ball("right", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
-                    }
-                    break;
-                case 'charg':
-                    Master.rightCharacter.recharge();
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if (action[0] == 'L') {
-            switch (action.substr(2, 6)) {
-                case 'move_':
-                    Master.leftCharacter.move(value_move[0], value_move[1]);
-                    break;
-                case 'shoot': 
-                    Master.ballLeft = new Ball("left", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
-                    break;
-                case 'charg':
-                    Master.leftCharacter.recharge();
-                    break;
-                default:
-                    break;
-            }
+        switch (action.substr(0, 6)) {
+            case 'R_move_':
+                Master.rightCharacter.move(value_move[0], value_move[1]);
+                break;
+            case 'R_shoot':
+                basic.showString(action);
+                basic.showNumber(value_move[0]);
+                if (Master.rightCharacter.remainingBalls != 0) {
+                    Master.ballRight.existance = false;
+                    Master.ballRight = new Ball("right", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                }
+                break;
+            case 'R_charg':
+                Master.rightCharacter.recharge();
+                break;
+            case 'L_move_':
+                Master.leftCharacter.move(value_move[0], value_move[1]);
+                break;
+            case 'L_shoot': 
+                Master.ballLeft = new Ball("left", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                break;
+            case 'L_charg':
+                Master.leftCharacter.recharge();
+                break;
+            default:
+                break;
         }
     }
 
