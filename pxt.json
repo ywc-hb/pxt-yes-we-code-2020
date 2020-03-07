@@ -16,7 +16,8 @@
         "Walls.ts",
         "Ball.ts",
         "Master.ts",
-        "Connection.ts"
+        "Connection.ts",
+        "menu_options.ts"
     ],
     "testFiles": [
         "test.ts"
