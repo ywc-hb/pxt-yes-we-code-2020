@@ -25,7 +25,7 @@ Pour développer ce projet, nous utilisons de la POO en TypeScript avec l'utilis
 - [x] Mouvement de la balle
 - [x] Détection des collisions
 - [ ] Création du t-shirt
-- [ ] Voir le comportement avec le t-shirt
+- [x] Voir le comportement avec le t-shirt
 - [ ] Communication entre les deux microbits
 
 Pour trouver le fonctionnement du t-shirt et son code source, rendez-vous [ici](https://github.com/ywc-hb/pxt-yes-we-code-t-shirt/)
@@ -51,3 +51,8 @@ Voir pour coordinner le début des 2 microbits
 
 Voir pour qund donner le code pour revivre pour la premiere fois
 
+# Crédit #
+
+Personnages du t-shirt :
+- https://www.freepik.com/free-vector/ninjas-character-collection-with-different-poses_2587916.htm
+- https://www.freepik.com/free-vector/cute-ninja-character-different-poses-with-flat-design_2630477.htm
