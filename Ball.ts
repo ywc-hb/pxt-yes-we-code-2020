@@ -59,7 +59,9 @@ class Ball extends Jouabilite {
     }
 
     public move(x_vector: number, y_vector: number) {
-        /* Fonction déplacant la balle de manière autonome en background */
+        /* x_vector : nombre de pixels de déplacement sur l'axe x
+         * y_vector : nombre de pixels de déplacement sur l'axe y
+         * Fonction déplacant la balle de manière autonome en background */
         control.inBackground(function () {
             this.x_vector = x_vector; 
             this.y_vector = y_vector;

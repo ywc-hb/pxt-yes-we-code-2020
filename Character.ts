@@ -23,10 +23,22 @@ class Character extends Jouabilite {
     }
 
     public move(x_vector: number, y_vector: number): void {
-        let vectors = this.movement(x_vector, y_vector);
+        /* x_vector : nombre de pixels de déplacement sur l'axe x
+         * y_vector : nombre de pixels de déplacement sur l'axe y
+         * Fonction faisant bouger, si possible, le personnage appelant */
+        let has_touched : direction = this.movement(x_vector, y_vector);
         this.displayCharacter(65535) //Effacement de l'ancienne position
-        this.x += vectors.x_vector;
-        this.y += vectors.y_vector;
+        // Définition de s'il y a mouvement
+        if (has_touched != direction.None) {
+            x_vector = 0;
+            y_vector = 0;
+        }
+
+        // Déplacement
+        this.x += x_vector;
+        this.y += y_vector;
+        
+        // Affichage de la nouvelle position
         this.displayCharacter(this.color);
     }
 
