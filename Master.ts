@@ -1,5 +1,4 @@
 class Master {
-    static pattern: Walls;
     static leftCharacter: Character;
     static rightCharacter: Character;
     static ballRight: Ball;
@@ -7,9 +6,8 @@ class Master {
 
     static init() {
         let connection = new Connection(1);
-        Master.pattern = new Walls();
-        Master.rightCharacter = new Character("left", 140, 64512, this.pattern);
-        Master.leftCharacter = new Character("right", 20, 64512, this.pattern);
+        Master.rightCharacter = new Character("left", 140, 64512);
+        Master.leftCharacter = new Character("right", 20, 64512);
         //Master.ballLeft = new Ball("left", 10, 10, 0, 0, Master.pattern, Master.rightCharacter, Master.leftCharacter, 1, 1);
     }
 
@@ -73,7 +71,7 @@ class Master {
                 basic.showNumber(value_move[0]);
                 if (Master.rightCharacter.remainingBalls != 0) {
                     Master.ballRight.existance = false;
-                    Master.ballRight = new Ball("right", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                    Master.ballRight = new Ball("right", x_new_ball, y_new_ball, 0, 10, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
                 }
                 break;
             case 'R_charg':
@@ -83,7 +81,7 @@ class Master {
                 Master.leftCharacter.move(value_move[0], value_move[1]);
                 break;
             case 'L_shoot': 
-                Master.ballLeft = new Ball("left", x_new_ball, y_new_ball, 0, 10, Master.pattern, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
+                Master.ballLeft = new Ball("left", x_new_ball, y_new_ball, 0, 10, Master.rightCharacter, Master.leftCharacter, value_move[0], value_move[1]);
                 break;
             case 'L_charg':
                 Master.leftCharacter.recharge();
