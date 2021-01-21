@@ -1,7 +1,9 @@
 enum direction {
-    Horizontal, 
-    Vertical,
-    None, 
+    /* Enum des différents types de rebonds possibles
+     */
+    Horizontal, // Rebond horizontal
+    Vertical, // Rebond vertical
+    None // Pas de rebond
 }
 
 let wallNW: number[][];
@@ -10,14 +12,15 @@ let wallNE: number[][];
 let wallSE: number[][];
 
 function displayMap() : void {
-        map();
-        let walls = wallSW.concat(wallNW).concat(wallNE).concat(wallSE);
-        let j = 0;
-        while (j < walls.length) {
-            LCD1IN8.DrawLine(walls[j][0], walls[j][1], walls[j][2], walls[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
-            j++;
-        }
-        LCD1IN8.LCD_Display();
+    // Fonction affichant les murs en les dessinant
+    map();
+    let walls = wallSW.concat(wallNW).concat(wallNE).concat(wallSE);
+    let j = 0;
+    while (j < walls.length) {
+        LCD1IN8.DrawLine(walls[j][0], walls[j][1], walls[j][2], walls[j][3], 0, DOT_PIXEL.DOT_PIXEL_1, LINE_STYLE.LINE_SOLID);
+        j++;
+    }
+    LCD1IN8.LCD_Display();
 }
 
 function map(): void {
@@ -79,7 +82,6 @@ function collision(x : number, y : number, rad : number) : direction {
                 closest[1] = murs[i][1];
             }
 		}
-        let distance : number = Math.sqrt(Math.pow(closest[0] - x, 2) + Math.pow(closest[1] - y, 2)) // Distance entre le centre de l'objet et le point le plus proche sur le mur
         if (Math.sqrt(Math.pow(closest[0] - x, 2) + Math.pow(closest[1] - y, 2)) <= rad) { // Défini le point le plus proche
             if(murs[i][0] == murs[i][2]) { // Le mur est horizontal
 		    return direction.Horizontal;

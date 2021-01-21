@@ -54,10 +54,11 @@ class Jouabilite {
     }
 
     protected displayCharacter(color: number): void {
+        // Affiche un rond de couleur `color` et de rayon adapté
         LCD1IN8.DrawCircle(this.x, this.y, this.rad, color, DRAW_FILL.DRAW_FULL, DOT_PIXEL.DOT_PIXEL_1);
         LCD1IN8.LCD_DisplayWindows(this.x - (this.rad + 1), this.y - (this.rad + 1), this.x + (this.rad + 1), this.y + (this.rad + 1));
     }
-    protected movement(x_vector: number, y_vector: number): { x_vector: number, y_vector: number, rebonds: boolean } {
+    protected movement(x_vector: number, y_vector: number): direction {
         let rebondir = false;
         // Appel de la fonction du fichier gérant les murs
         let has_touched : direction = collision(this.x(), this.y(), this.rad());
@@ -73,10 +74,6 @@ class Jouabilite {
             // Fixer correctement pour que ça avance normalement
         }
 
-        return {
-            x_vector: x_vector,
-            y_vector: y_vector,
-            rebonds: rebondir
-        };
+        return has_touched;
     }
 } 

@@ -19,9 +19,7 @@
         "Master.ts",
         "Connection.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": [],
     "public": false,
     "supportedTargets": [
         "microbit"

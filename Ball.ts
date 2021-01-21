@@ -13,7 +13,7 @@ class Ball extends Jouabilite {
         this._speed = speed;
         this._existance = true;
         if (typeof (x_vector) === "number" && typeof (y_vector) === "number") {
-            this.move(x_vector, y_vector);
+            this.move(x_vector, y_vector); // Début du mouvement si `x_vector` et `y_vector` sont correctement définis
         }
     }
 
@@ -47,28 +47,30 @@ class Ball extends Jouabilite {
     }
 
     private crash(charact: Character): boolean {
-        let dx: number = this.x - charact.x;
-        let dy: number = this.y - charact.y;
-        let d: number = Math.sqrt(dx * dx + dy * dy);
-        if (d < this.rad + charact.rad) {
+        /* Fonction testant s'il y a collision avec l'objet passé en paramètre */
+        // Calcul de la distance entre les deux centres
+        let d: number = Math.sqrt((this.x - charact.x) * (this.x - charact.x) + (this.y - charact.y) * (this.y - charact.y)); 
+        if (d < (this.rad + charact.rad)) {
             return true;
         }
         else {
             return false;
         }
     }
+
     public move(x_vector: number, y_vector: number) {
+        /* Fonction déplacant la balle de manière autonome en background */
         control.inBackground(function () {
-            this.x_vector = x_vector;
+            this.x_vector = x_vector; 
             this.y_vector = y_vector;
             let nb_rebond = 0;
             while (this.existance) {
                 let has_touched = this.movement(this.x_vector, this.y_vector);
                 if (has_touched == direction.Vertical) {
-                    this.y_vector = -1 * this.y_vector;
+                    this.y_vector = -1 * this.y_vector; // Inversion du sens de `y_vector`
                 }
                 if (has_touched == direction.Horizontal) {
-                    this.x_vector = -1 * this.x_vector;
+                    this.x_vector = -1 * this.x_vector; // Inversion du sens de `y_vector`
                 }
                 if (has_touched != direction.None) {
                     nb_rebond ++;
