@@ -61,7 +61,7 @@ class Jouabilite {
     protected movement(x_vector: number, y_vector: number): direction {
         let rebondir = false;
         // Appel de la fonction du fichier gérant les murs
-        let has_touched : direction = collision(this.x(), this.y(), this.rad());
+        let has_touched : direction = collision(this.x, this.y, this.rad);
         if (has_touched == direction.Vertical) {
             rebondir = true;
             // Fixer correctement pour un rebond vertical
