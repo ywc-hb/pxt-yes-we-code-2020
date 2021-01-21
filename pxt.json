@@ -5,8 +5,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "pxt-microbit": "github:ywc-hb/pxt-microbit-screen#v1.2.5",
-        "microphone": "*"
+        "microphone": "*",
+        "LCD1in8": "github:waveshare/wslcd1in8-v0#v0.0.3"
     },
     "files": [
         "README.md",
@@ -20,10 +20,6 @@
     ],
     "testFiles": [],
     "public": false,
-    "targetVersions": {
-        "target": "3.1.47",
-        "targetId": "microbit"
-    },
     "supportedTargets": [
         "microbit"
     ],
